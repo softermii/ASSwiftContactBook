@@ -14,6 +14,8 @@
 		1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E81EEAD44A005B66FB /* LaunchScreen.storyboard */; };
 		1EAD17F21EEAD460005B66FB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17F11EEAD460005B66FB /* Contact.swift */; };
 		1EBC48F91EF9155B00877E9B /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */; };
+		1EF30AD51EFA36AD0050AFD8 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */; };
+		1EF30AD71EFA37580050AFD8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF30AD61EFA37580050AFD8 /* ContactCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1EAD17EB1EEAD44A005B66FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EAD17F11EEAD460005B66FB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
+		1EF30AD61EFA37580050AFD8 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				1E6F89441EEEBC8E0061F0DE /* ContactsData.swift */,
 				1EAD17E11EEAD44A005B66FB /* ContactsViewController.swift */,
 				1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */,
+				1EF30AD61EFA37580050AFD8 /* ContactCell.swift */,
+				1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */,
 				1EAD17E61EEAD44A005B66FB /* Assets.xcassets */,
 				1EAD17E81EEAD44A005B66FB /* LaunchScreen.storyboard */,
 				1EAD17EB1EEAD44A005B66FB /* Info.plist */,
@@ -129,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF30AD51EFA36AD0050AFD8 /* ContactCell.xib in Resources */,
 				1EBC48F91EF9155B00877E9B /* ContactsViewController.xib in Resources */,
 				1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */,
 				1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */,
@@ -142,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF30AD71EFA37580050AFD8 /* ContactCell.swift in Sources */,
 				1EAD17F21EEAD460005B66FB /* Contact.swift in Sources */,
 				1EAD17E21EEAD44A005B66FB /* ContactsViewController.swift in Sources */,
 				1E6F89451EEEBC8E0061F0DE /* ContactsData.swift in Sources */,

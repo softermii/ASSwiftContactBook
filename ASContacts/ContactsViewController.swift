@@ -24,10 +24,12 @@ class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName:"ContactCell", bundle: nil), forCellReuseIdentifier: "contact")
         tableView.tableFooterView = UIView()
         //tableView.dragDelegate = self
         //tableView.dropDelegate = self
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dragInteractionEnabled = true
         
         self.contacts = ContactsData().getAllContacts()
@@ -37,19 +39,27 @@ class ContactsViewController: UIViewController {
     
 }
 
-extension ContactsViewController : UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts[indexPath.row]
-        print(contact.phones.first ?? "")
-        cell.textLabel?.text = "\(contact.firstName) \(contact.lastName)"
-        cell.detailTextLabel?.text = contact.phones.first
+        
+        cell.profileImage.image = UIImage(named: "person")
+        cell.fullName.text = "\(contact.firstName) \(contact.lastName)"
+        cell.phoneNumber.text = contact.phones.first
         return cell
+    }
+}
+
+extension ContactsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
 }
