@@ -8,6 +8,14 @@
 
 import Foundation
 import Contacts
+import UIKit
+
+extension UIImage {
+    public func getImageFromData(data: Data?) -> UIImage? {
+        guard let data = data else { return UIImage(named: "person") }
+        return UIImage(data: data)
+    }
+}
 
 class Contact: NSObject {
     
@@ -27,9 +35,13 @@ class Contact: NSObject {
         }
     }
     
+    
+    
+    
     var firstName: String = ""
     var lastName: String = ""
-    var imageData: Data!
+    var image = UIImage(named: "person")
+    var thumb = UIImage(named: "person")
     var phones: [String] = []
     var emails: [String] = []
     

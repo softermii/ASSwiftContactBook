@@ -8,6 +8,7 @@
 
 import Foundation
 import Contacts
+import UIKit
 
 
 class ContactsData: NSObject {
@@ -20,7 +21,8 @@ class ContactsData: NSObject {
         CNContactFamilyNameKey,
         CNContactEmailAddressesKey,
         CNContactPhoneNumbersKey,
-        CNContactImageDataAvailableKey,
+        CNContactImageDataKey,
+        CNContactThumbnailImageDataKey,
         CNContactThumbnailImageDataKey
         ] as [Any]
     
@@ -35,11 +37,16 @@ class ContactsData: NSObject {
         
         try? contactsStore.enumerateContacts(with: request, usingBlock: { (person, pointer) in
             
+            
             let contact = Contact()
             contact.firstName = person.givenName
             contact.lastName = person.familyName
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
+            if let image = person.imageData, let thumb = person.thumbnailImageData {
+                contact.image = UIImage(data: image)
+                contact.thumb = UIImage(data: thumb)
+            }
             self.contacts.append(contact)
         })
         return self.contacts

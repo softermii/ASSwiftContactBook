@@ -14,6 +14,17 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        profileImage.image = UIImage(named: "person")
+        
+    }
+    
+    private func setup() {
+        profileImage.layer.cornerRadius = 20
+        profileImage.clipsToBounds = true
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         profileImage.image = UIImage(named: "person")

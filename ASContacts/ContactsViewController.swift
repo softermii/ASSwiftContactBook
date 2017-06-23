@@ -28,6 +28,7 @@ class ContactsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         //tableView.dragDelegate = self
         //tableView.dropDelegate = self
+        tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dragInteractionEnabled = true
@@ -49,7 +50,7 @@ extension ContactsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts[indexPath.row]
         
-        cell.profileImage.image = UIImage(named: "person")
+        cell.profileImage.image = contact.thumb
         cell.fullName.text = "\(contact.firstName) \(contact.lastName)"
         cell.phoneNumber.text = contact.phones.first
         return cell
@@ -60,6 +61,18 @@ extension ContactsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+}
+
+extension ContactsViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("prefetching following indexes: \(indexPaths)")
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("cancel prefetching following indexes: \(indexPaths)")
     }
     
 }

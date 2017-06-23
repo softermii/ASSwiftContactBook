@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G16b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G16b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,14 +22,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="373" height="50.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="z4X-4a-EI1">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z4X-4a-EI1">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="50.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hP-q21">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hP-q21">
+                                <rect key="frame" x="5" y="5" width="40" height="40.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="DQF-CT-nI8">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="998" constant="40" id="iDJ-qv-sBq"/>
+                                            <constraint firstAttribute="height" priority="998" constant="40" id="pJ7-um-7Kq"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
                                                 <integer key="value" value="20"/>
@@ -38,22 +42,18 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0wx-XC-LdQ"/>
-                                    <constraint firstAttribute="width" constant="40" id="CHQ-QJ-bCL"/>
-                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-1P-Ett">
-                                <rect key="frame" x="45" y="0.0" width="328" height="50.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-1P-Ett">
+                                <rect key="frame" x="50" y="5.5" width="318" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBk-zk-vOK">
-                                        <rect key="frame" x="0.0" y="0.0" width="328" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="17.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksV-3q-lpN">
-                                        <rect key="frame" x="0.0" y="22.5" width="328" height="28"/>
+                                        <rect key="frame" x="0.0" y="22.5" width="29.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -62,11 +62,9 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="fmM-1P-Ett" secondAttribute="bottom" id="0ba-0g-9a5"/>
-                            <constraint firstItem="fmM-1P-Ett" firstAttribute="top" secondItem="z4X-4a-EI1" secondAttribute="top" id="S6I-e3-b50"/>
                             <constraint firstItem="fmM-1P-Ett" firstAttribute="leading" secondItem="uf2-hP-q21" secondAttribute="trailing" constant="5" id="htP-Wi-3jb"/>
-                            <constraint firstAttribute="trailing" secondItem="fmM-1P-Ett" secondAttribute="trailing" id="zDH-4h-Bis"/>
                         </constraints>
+                        <edgeInsets key="layoutMargins" top="5" left="5" bottom="5" right="5"/>
                     </stackView>
                 </subviews>
                 <constraints>
