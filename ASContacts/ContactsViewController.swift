@@ -23,7 +23,13 @@ class ContactsViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         
+        self.contacts = ContactsData().getAllContacts()
+        print("Found \(self.contacts.count) Contacts")
+    }
+    
+    private func setupTableView() {
         tableView.register(UINib(nibName:"ContactCell", bundle: nil), forCellReuseIdentifier: "contact")
         tableView.tableFooterView = UIView()
         //tableView.dragDelegate = self
@@ -32,11 +38,7 @@ class ContactsViewController: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dragInteractionEnabled = true
-        
-        self.contacts = ContactsData().getAllContacts()
-        print("Found \(self.contacts.count) Contacts")
-        
-    }  
+    }
     
 }
 
