@@ -10,11 +10,12 @@ import UIKit
 import Contacts
 
 
-
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    weak var dispatchItem: DispatchWorkItem?
     
     var category = [String]()
     var contacts = [Contact]() {
@@ -24,6 +25,9 @@ class ContactsViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    // MARK: - Settings
+    public static var navBarTintColor = UIColor.coolBlue
     
     
     override func viewDidLoad() {
@@ -44,16 +48,20 @@ class ContactsViewController: UIViewController {
     }
     
     private func setupController() {
+        
         title = "Contact list"
+        
         let closeButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ContactsViewController.close))
-        closeButton.tintColor = UIColor.white
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ContactsViewController.done))
+        
         doneButton.tintColor = UIColor.white
+        closeButton.tintColor = UIColor.white
+        
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = doneButton
-        navigationController?.navigationBar.barTintColor = UIColor.coolBlue
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor.white]
         
+        navigationController?.navigationBar.barTintColor = ContactsViewController.navBarTintColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor.white]
     }
     
     @objc private func close() {
@@ -72,6 +80,9 @@ class ContactsViewController: UIViewController {
         tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.sectionIndexColor = UIColor.darkGray
+        tableView.sectionIndexBackgroundColor = UIColor.lightText
+        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
     }
     
 }
@@ -121,6 +132,27 @@ extension ContactsViewController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         print("cancel prefetching following indexes: \(indexPaths)")
+    }
+}
+
+extension ContactsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if range.length + range.location > 0 {
+            let filteredContacts = contacts.filter { ($0.firstName.contains(text) || $0.lastName.contains(text)) }
+            contacts = filteredContacts
+            
+        } else {
+            contacts = ContactsData().getAllContacts()
+        }
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count == 0 {
+            contacts = ContactsData().getAllContacts()
+        }
     }
     
 }
