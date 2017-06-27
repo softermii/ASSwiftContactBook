@@ -7,29 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E6F89451EEEBC8E0061F0DE /* ContactsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6F89441EEEBC8E0061F0DE /* ContactsData.swift */; };
-		1EAD17E01EEAD44A005B66FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17DF1EEAD44A005B66FB /* AppDelegate.swift */; };
-		1EAD17E21EEAD44A005B66FB /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17E11EEAD44A005B66FB /* ContactsViewController.swift */; };
+		1E06E7721F025EC6000E7968 /* ContactCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E76B1F025E29000E7968 /* ContactCell.swift */; };
+		1E06E7731F025EC6000E7968 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E76C1F025E29000E7968 /* ContactCell.xib */; };
+		1E06E7741F025EC6000E7968 /* Contact.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7651F025E29000E7968 /* Contact.swift */; };
+		1E06E7751F025EC6000E7968 /* ContactsData.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7661F025E29000E7968 /* ContactsData.swift */; };
+		1E06E7761F025EC6000E7968 /* ContactsViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ContactsViewController.swift */; };
+		1E06E7771F025EC6000E7968 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ContactsViewController.xib */; };
+		1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7701F025E29000E7968 /* Extension+UIColor.swift */; };
+		1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7711F025E29000E7968 /* Extensions.swift */; };
 		1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
 		1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E81EEAD44A005B66FB /* LaunchScreen.storyboard */; };
-		1EAD17F21EEAD460005B66FB /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17F11EEAD460005B66FB /* Contact.swift */; };
-		1EBC48F91EF9155B00877E9B /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */; };
-		1EF30AD51EFA36AD0050AFD8 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */; };
-		1EF30AD71EFA37580050AFD8 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF30AD61EFA37580050AFD8 /* ContactCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E6F89441EEEBC8E0061F0DE /* ContactsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsData.swift; sourceTree = "<group>"; };
-		1EAD17DC1EEAD44A005B66FB /* ASContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EAD17DF1EEAD44A005B66FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1EAD17E11EEAD44A005B66FB /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		1E06E7651F025E29000E7968 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		1E06E7661F025E29000E7968 /* ContactsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsData.swift; sourceTree = "<group>"; };
+		1E06E7681F025E29000E7968 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		1E06E7691F025E29000E7968 /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		1E06E76B1F025E29000E7968 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		1E06E76C1F025E29000E7968 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
+		1E06E76E1F025E29000E7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E06E7701F025E29000E7968 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		1E06E7711F025E29000E7968 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1E0BE78A1F025CB900D6850B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1EAD17DC1EEAD44A005B66FB /* ASContactBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASContactBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAD17E61EEAD44A005B66FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EAD17E91EEAD44A005B66FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EAD17EB1EEAD44A005B66FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1EAD17F11EEAD460005B66FB /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
-		1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
-		1EF30AD61EFA37580050AFD8 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,45 +47,88 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E06E7641F025E29000E7968 /* ContactBook */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E7651F025E29000E7968 /* Contact.swift */,
+				1E06E7661F025E29000E7968 /* ContactsData.swift */,
+			);
+			path = ContactBook;
+			sourceTree = "<group>";
+		};
+		1E06E7671F025E29000E7968 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E7681F025E29000E7968 /* ContactsViewController.swift */,
+				1E06E7691F025E29000E7968 /* ContactsViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1E06E76A1F025E29000E7968 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E76B1F025E29000E7968 /* ContactCell.swift */,
+				1E06E76C1F025E29000E7968 /* ContactCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1E06E76D1F025E29000E7968 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E76E1F025E29000E7968 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		1E06E76F1F025E29000E7968 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E06E7701F025E29000E7968 /* Extension+UIColor.swift */,
+				1E06E7711F025E29000E7968 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1EAD17D31EEAD44A005B66FB = {
 			isa = PBXGroup;
 			children = (
-				1EAD17DE1EEAD44A005B66FB /* ASContacts */,
+				1EAD17DE1EEAD44A005B66FB /* ASContactBook */,
 				1EAD17DD1EEAD44A005B66FB /* Products */,
+				1E0BE78A1F025CB900D6850B /* Default-568h@2x.png */,
 			);
 			sourceTree = "<group>";
 		};
 		1EAD17DD1EEAD44A005B66FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD17DC1EEAD44A005B66FB /* ASContacts.app */,
+				1EAD17DC1EEAD44A005B66FB /* ASContactBook.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1EAD17DE1EEAD44A005B66FB /* ASContacts */ = {
+		1EAD17DE1EEAD44A005B66FB /* ASContactBook */ = {
 			isa = PBXGroup;
 			children = (
-				1EAD17DF1EEAD44A005B66FB /* AppDelegate.swift */,
-				1EAD17F11EEAD460005B66FB /* Contact.swift */,
-				1E6F89441EEEBC8E0061F0DE /* ContactsData.swift */,
-				1EAD17E11EEAD44A005B66FB /* ContactsViewController.swift */,
-				1EBC48F81EF9155B00877E9B /* ContactsViewController.xib */,
-				1EF30AD61EFA37580050AFD8 /* ContactCell.swift */,
-				1EF30AD41EFA36AD0050AFD8 /* ContactCell.xib */,
+				1E06E76D1F025E29000E7968 /* AppDelegate */,
+				1E06E76A1F025E29000E7968 /* Cells */,
+				1E06E7641F025E29000E7968 /* ContactBook */,
+				1E06E7671F025E29000E7968 /* Controllers */,
+				1E06E76F1F025E29000E7968 /* Extensions */,
 				1EAD17E61EEAD44A005B66FB /* Assets.xcassets */,
 				1EAD17E81EEAD44A005B66FB /* LaunchScreen.storyboard */,
 				1EAD17EB1EEAD44A005B66FB /* Info.plist */,
 			);
-			path = ASContacts;
+			path = ASContactBook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1EAD17DB1EEAD44A005B66FB /* ASContacts */ = {
+		1EAD17DB1EEAD44A005B66FB /* ASContactBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EAD17EE1EEAD44A005B66FB /* Build configuration list for PBXNativeTarget "ASContacts" */;
+			buildConfigurationList = 1EAD17EE1EEAD44A005B66FB /* Build configuration list for PBXNativeTarget "ASContactBook" */;
 			buildPhases = (
 				1EAD17D81EEAD44A005B66FB /* Sources */,
 				1EAD17D91EEAD44A005B66FB /* Frameworks */,
@@ -91,9 +138,9 @@
 			);
 			dependencies = (
 			);
-			name = ASContacts;
+			name = ASContactBook;
 			productName = ASContacts;
-			productReference = 1EAD17DC1EEAD44A005B66FB /* ASContacts.app */;
+			productReference = 1EAD17DC1EEAD44A005B66FB /* ASContactBook.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -112,7 +159,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1EAD17D71EEAD44A005B66FB /* Build configuration list for PBXProject "ASContacts" */;
+			buildConfigurationList = 1EAD17D71EEAD44A005B66FB /* Build configuration list for PBXProject "ASContactBook" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -125,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EAD17DB1EEAD44A005B66FB /* ASContacts */,
+				1EAD17DB1EEAD44A005B66FB /* ASContactBook */,
 			);
 		};
 /* End PBXProject section */
@@ -135,8 +182,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF30AD51EFA36AD0050AFD8 /* ContactCell.xib in Resources */,
-				1EBC48F91EF9155B00877E9B /* ContactsViewController.xib in Resources */,
+				1E06E7721F025EC6000E7968 /* ContactCell.swift in Resources */,
+				1E06E7731F025EC6000E7968 /* ContactCell.xib in Resources */,
+				1E06E7741F025EC6000E7968 /* Contact.swift in Resources */,
+				1E06E7751F025EC6000E7968 /* ContactsData.swift in Resources */,
+				1E06E7761F025EC6000E7968 /* ContactsViewController.swift in Resources */,
+				1E06E7771F025EC6000E7968 /* ContactsViewController.xib in Resources */,
+				1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */,
+				1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */,
 				1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */,
 				1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */,
 			);
@@ -149,11 +202,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EF30AD71EFA37580050AFD8 /* ContactCell.swift in Sources */,
-				1EAD17F21EEAD460005B66FB /* Contact.swift in Sources */,
-				1EAD17E21EEAD44A005B66FB /* ContactsViewController.swift in Sources */,
-				1E6F89451EEEBC8E0061F0DE /* ContactsData.swift in Sources */,
-				1EAD17E01EEAD44A005B66FB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -270,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -283,10 +331,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RBHZMT59H3;
-				INFOPLIST_FILE = ASContacts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = ASContactBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContacts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContactBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -299,10 +347,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RBHZMT59H3;
-				INFOPLIST_FILE = ASContacts/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = ASContactBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContacts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContactBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -313,7 +361,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EAD17D71EEAD44A005B66FB /* Build configuration list for PBXProject "ASContacts" */ = {
+		1EAD17D71EEAD44A005B66FB /* Build configuration list for PBXProject "ASContactBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EAD17EC1EEAD44A005B66FB /* Debug */,
@@ -322,7 +370,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EAD17EE1EEAD44A005B66FB /* Build configuration list for PBXNativeTarget "ASContacts" */ = {
+		1EAD17EE1EEAD44A005B66FB /* Build configuration list for PBXNativeTarget "ASContactBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EAD17EF1EEAD44A005B66FB /* Debug */,
