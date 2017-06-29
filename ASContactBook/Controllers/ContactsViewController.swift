@@ -9,15 +9,18 @@
 import UIKit
 import Contacts
 
+
 protocol ASContactBookPickerDelegate: class {
     func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact])
 }
+
 
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var doneButton: UIBarButtonItem!
     open weak var contactPickerDelegate: ASContactBookPickerDelegate?
     
     var category = [String]()
@@ -31,7 +34,11 @@ class ContactsViewController: UIViewController {
         }
     }
     
-    var selectedContacts = [Contact]()
+    var selectedContacts = [Contact]() {
+        didSet {
+            doneButton.isEnabled = selectedContacts.count > 0 ? true : false
+        }
+    }
     
     
     
@@ -43,9 +50,9 @@ class ContactsViewController: UIViewController {
         initButtons()
     }
     
-    convenience init(delegate: ContactsViewController) {
-        self.init()
-        contactPickerDelegate = delegate as? ASContactBookPickerDelegate
+    convenience public init(delegate: ASContactBookPickerDelegate) {
+        self.init(nibName: "ContactsViewController", bundle: nil)
+        contactPickerDelegate = delegate
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,18 +75,17 @@ class ContactsViewController: UIViewController {
         
         let closeButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ContactsViewController.close))
         closeButton.tintColor = UIColor.white
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ContactsViewController.done))
-        doneButton.tintColor = UIColor.white
-        
         navigationItem.leftBarButtonItem = closeButton
+        
+        doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ContactsViewController.done))
+        doneButton.tintColor = UIColor.white
+        doneButton.isEnabled = false
         navigationItem.rightBarButtonItem = doneButton
     }
     
     
     @objc private func close() {
-        print("closing...")
-        //dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func done() {
@@ -129,7 +135,6 @@ extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let cell = tableView.cellForRow(at: indexPath) as! ContactCell
-        
         guard let contact = cell.contact else { return }
         
         if !selectedContacts.contains(contact) {
@@ -139,14 +144,9 @@ extension ContactsViewController: UITableViewDelegate {
             selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
             cell.accessoryType = .none
         }
-        debugPrint("Selected \(selectedContacts.count) contacts")
         
+        debugPrint("Selected \(selectedContacts.count) contacts")
     }
-    
-
-   
-    
-       
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return category[section]
@@ -162,11 +162,11 @@ extension ContactsViewController: UITableViewDelegate {
 extension ContactsViewController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        print("prefetching following indexes: \(indexPaths)")
+        debugPrint("prefetching following indexes: \(indexPaths)")
     }
     
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        print("cancel prefetching following indexes: \(indexPaths)")
+        debugPrint("cancel prefetching following indexes: \(indexPaths)")
     }
     
 }
