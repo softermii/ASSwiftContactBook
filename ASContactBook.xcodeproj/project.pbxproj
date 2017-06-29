@@ -15,6 +15,16 @@
 		1E06E7771F025EC6000E7968 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ContactsViewController.xib */; };
 		1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7701F025E29000E7968 /* Extension+UIColor.swift */; };
 		1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7711F025E29000E7968 /* Extensions.swift */; };
+		1EACD4D21F05021D00784571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E76E1F025E29000E7968 /* AppDelegate.swift */; };
+		1EACD4D31F05021D00784571 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ContactsViewController.swift */; };
+		1EACD4D41F05023400784571 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E76B1F025E29000E7968 /* ContactCell.swift */; };
+		1EACD4D51F05023400784571 /* ContactCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E76C1F025E29000E7968 /* ContactCell.xib */; };
+		1EACD4D61F05023400784571 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7651F025E29000E7968 /* Contact.swift */; };
+		1EACD4D71F05023400784571 /* ContactsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7661F025E29000E7968 /* ContactsData.swift */; };
+		1EACD4D81F05023400784571 /* ContactsViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ContactsViewController.xib */; };
+		1EACD4D91F05023400784571 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7701F025E29000E7968 /* Extension+UIColor.swift */; };
+		1EACD4DA1F05023400784571 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7711F025E29000E7968 /* Extensions.swift */; };
+		1EACD4DB1F05023400784571 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
 		1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
 		1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E81EEAD44A005B66FB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -202,6 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EACD4D41F05023400784571 /* ContactCell.swift in Sources */,
+				1EACD4D51F05023400784571 /* ContactCell.xib in Sources */,
+				1EACD4D61F05023400784571 /* Contact.swift in Sources */,
+				1EACD4D71F05023400784571 /* ContactsData.swift in Sources */,
+				1EACD4D81F05023400784571 /* ContactsViewController.xib in Sources */,
+				1EACD4D91F05023400784571 /* Extension+UIColor.swift in Sources */,
+				1EACD4DA1F05023400784571 /* Extensions.swift in Sources */,
+				1EACD4DB1F05023400784571 /* Assets.xcassets in Sources */,
+				1EACD4D21F05021D00784571 /* AppDelegate.swift in Sources */,
+				1EACD4D31F05021D00784571 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,8 +356,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContactBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -352,8 +372,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aSoft.ASContactBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

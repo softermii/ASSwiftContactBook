@@ -9,14 +9,19 @@
 import UIKit
 import Contacts
 
-
+protocol ASContactBookPickerDelegate: class {
+    func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact])
+}
 
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    open weak var contactPickerDelegate: ASContactBookPickerDelegate?
+    
     var category = [String]()
+    
     var contacts = [Contact]() {
         didSet {
             category = Array(Set(self.contacts.map { String($0.firstName.substring(to: 1)) })).sorted
@@ -25,12 +30,21 @@ class ContactsViewController: UIViewController {
         }
     }
     
+    var selectedContacts = [Contact]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupController()
+        initButtons()
+    }
+    
+    convenience init(delegate: ContactsViewController) {
+        self.init()
+        contactPickerDelegate = delegate as? ASContactBookPickerDelegate
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,16 +59,22 @@ class ContactsViewController: UIViewController {
     
     private func setupController() {
         title = "Contact list"
+        navigationController?.navigationBar.barTintColor = UIColor.coolBlue
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+    }
+    
+    fileprivate func initButtons() {
+        
         let closeButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ContactsViewController.close))
         closeButton.tintColor = UIColor.white
+        
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ContactsViewController.done))
         doneButton.tintColor = UIColor.white
+        
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItem = doneButton
-        navigationController?.navigationBar.barTintColor = UIColor.coolBlue
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:UIColor.white]
-        
     }
+    
     
     @objc private func close() {
         print("closing...")
@@ -62,8 +82,9 @@ class ContactsViewController: UIViewController {
     }
     
     @objc private func done() {
-        print("selected...")
-        //dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) { 
+            self.contactPickerDelegate?.didSelectContacts(self, selectedContacts: self.selectedContacts)
+        }
     }
     
     private func setupTableView() {
@@ -89,7 +110,6 @@ extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
-        
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
         
         cell.fullName.text = "\(contact.firstName) \(contact.lastName)"
@@ -101,6 +121,15 @@ extension ContactsViewController: UITableViewDataSource {
 }
 
 extension ContactsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let index = tableView.indexPathForSelectedRow {
+            let contact = contacts[index.row]
+            print(contact.firstName)
+        }
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return category[section]
@@ -121,6 +150,29 @@ extension ContactsViewController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         print("cancel prefetching following indexes: \(indexPaths)")
+    }
+    
+}
+
+
+extension ContactsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if range.length + range.location > 0 {
+            let filteredContacts = contacts.filter { ($0.firstName.contains(text) || $0.lastName.contains(text)) }
+            contacts = filteredContacts
+            
+        } else {
+            contacts = ContactsData().getAllContacts()
+        }
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count == 0 {
+            contacts = ContactsData().getAllContacts()
+        }
     }
     
 }
