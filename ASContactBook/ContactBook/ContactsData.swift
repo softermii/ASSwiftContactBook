@@ -17,6 +17,7 @@ class ContactsData: NSObject {
     
     let keysToFetch = [
         CNContactFormatter.descriptorForRequiredKeys(for: .phoneticFullName),
+        CNContactIdentifierKey,
         CNContactGivenNameKey,
         CNContactFamilyNameKey,
         CNContactEmailAddressesKey,
@@ -42,6 +43,9 @@ class ContactsData: NSObject {
             contact.lastName = person.familyName
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
+            contact.contactId = person.identifier
+      
+            
             if let image = person.imageData, let thumb = person.thumbnailImageData {
                 contact.image = UIImage(data: image)
                 contact.thumb = UIImage(data: thumb)

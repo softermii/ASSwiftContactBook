@@ -24,8 +24,9 @@ class ContactsViewController: UIViewController {
     
     var contacts = [Contact]() {
         didSet {
-            category = Array(Set(self.contacts.map { String($0.firstName.substring(to: 1)) })).sorted
+            category = Array(Set(self.contacts.map { String($0.firstName.substring(to: 1).uppercased() ) })).sorted
                 { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+            print(category)
             tableView.reloadData()
         }
     }
@@ -60,7 +61,7 @@ class ContactsViewController: UIViewController {
     private func setupController() {
         title = "Contact list"
         navigationController?.navigationBar.barTintColor = UIColor.coolBlue
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
     fileprivate func initButtons() {
@@ -93,6 +94,8 @@ class ContactsViewController: UIViewController {
         tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.sectionIndexColor = UIColor.darkGray
+        tableView.sectionIndexBackgroundColor = UIColor.lightText
     }
     
 }
@@ -115,6 +118,7 @@ extension ContactsViewController: UITableViewDataSource {
         cell.fullName.text = "\(contact.firstName) \(contact.lastName)"
         cell.phoneNumber.text = contact.phones.first
         cell.profileImage.image = contact.thumb
+        cell.contact = contact
         
         return cell
     }
@@ -122,14 +126,27 @@ extension ContactsViewController: UITableViewDataSource {
 
 extension ContactsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let index = tableView.indexPathForSelectedRow {
-            let contact = contacts[index.row]
-            print(contact.firstName)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let cell = tableView.cellForRow(at: indexPath) as! ContactCell
+        
+        guard let contact = cell.contact else { return }
+        
+        if !selectedContacts.contains(contact) {
+            selectedContacts.append(contact)
+            cell.accessoryType = .checkmark
+        } else {
+            selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
+            cell.accessoryType = .none
         }
+        debugPrint("Selected \(selectedContacts.count) contacts")
         
     }
     
+
+   
+    
+       
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return category[section]

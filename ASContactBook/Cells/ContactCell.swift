@@ -14,6 +14,8 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+    var contact: Contact?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImage.image = UIImage(named: "person")
@@ -30,5 +32,6 @@ class ContactCell: UITableViewCell {
         profileImage.image = UIImage(named: "person")
         fullName.text = nil
         phoneNumber.text = nil
+        contact = nil
     }
 }

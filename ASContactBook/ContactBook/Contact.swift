@@ -35,9 +35,9 @@ class Contact: NSObject {
         }
     }
     
+
     
-    
-    
+    var contactId: String = ""
     var firstName: String = ""
     var lastName: String = ""
     var image = UIImage(named: "person")
