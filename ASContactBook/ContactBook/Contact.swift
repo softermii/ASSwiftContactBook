@@ -35,11 +35,22 @@ class Contact: NSObject {
         }
     }
     
+    var birthdayDate = Date() {
+        didSet {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd/YYYY"
+            birthday = formatter.string(from: birthdayDate)
+        }
+    }
+    
 
     
     var contactId: String = ""
     var firstName: String = ""
     var lastName: String = ""
+    var jobTitle: String = ""
+    var organization: String = ""
+    var birthday: String = ""
     var image = UIImage(named: "person")
     var thumb = UIImage(named: "person")
     var phones: [String] = []

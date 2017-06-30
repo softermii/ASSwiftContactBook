@@ -23,6 +23,9 @@ class ContactsData: NSObject {
         CNContactEmailAddressesKey,
         CNContactPhoneNumbersKey,
         CNContactImageDataKey,
+        CNContactBirthdayKey,
+        CNContactJobTitleKey,
+        CNContactOrganizationNameKey,
         CNContactThumbnailImageDataKey,
         CNContactThumbnailImageDataKey
         ] as [Any]
@@ -44,6 +47,13 @@ class ContactsData: NSObject {
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
             contact.contactId = person.identifier
+            contact.jobTitle = person.jobTitle
+            
+            if let date = person.birthday?.date {
+                contact.birthdayDate = date
+            }
+            
+            contact.organization = person.organizationName
       
             
             if let image = person.imageData, let thumb = person.thumbnailImageData {

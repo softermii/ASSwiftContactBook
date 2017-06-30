@@ -14,7 +14,7 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
-    var contact: Contact?
+    var contactData: Contact?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +22,25 @@ class ContactCell: UITableViewCell {
         
     }
     
-    private func setup() {
-        profileImage.layer.cornerRadius = 20
-        profileImage.clipsToBounds = true
+    
+    func setupCell(contact: Contact, subtitleType: SubtitleType) {
+        
+        contactData = contact
+        fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
+        profileImage.image = contact.thumb
+        
+        switch subtitleType {
+        case .phone:
+            phoneNumber.text = contact.phones.count > 0 ? contact.phones[0] : ""
+        case .email:
+            phoneNumber.text = contact.emails.count > 0 ? contact.emails[0] : ""
+        case .job:
+            phoneNumber.text = "Job title: \(contact.jobTitle)"
+        case .organization:
+            phoneNumber.text = "Organization: \(contact.organization)"
+        case .birthday:
+            phoneNumber.text = "Birthday: \(contact.birthday)"
+        }
     }
     
     override func prepareForReuse() {
@@ -32,6 +48,6 @@ class ContactCell: UITableViewCell {
         profileImage.image = UIImage(named: "person")
         fullName.text = nil
         phoneNumber.text = nil
-        contact = nil
+        contactData = nil
     }
 }

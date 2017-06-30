@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     
     @IBAction func showPicker() {
         
-        let contacts = ContactsViewController(delegate: self as ASContactBookPickerDelegate)
+        let contacts = ContactsViewController(delegate: self)
+        //let contacts = ContactsViewController(delegate: self, subTitle: .phone)
         let nav = UINavigationController(rootViewController: contacts)
         self.present(nav, animated: true, completion: nil)
     }

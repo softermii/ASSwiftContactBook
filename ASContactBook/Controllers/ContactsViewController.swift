@@ -14,6 +14,14 @@ protocol ASContactBookPickerDelegate: class {
     func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact])
 }
 
+enum SubtitleType {
+    case email
+    case phone
+    case birthday
+    case organization
+    case job
+}
+
 
 class ContactsViewController: UIViewController {
     
@@ -41,6 +49,15 @@ class ContactsViewController: UIViewController {
     }
     
     
+    // MARK: - Settings
+    static public var barColor = UIColor.coolBlue
+    static public var indexColor = UIColor.coolBlue
+    static public var indexBackgroundColor = UIColor.lightText
+    static public var cancelButtonTittle = "Cancel"
+    static public var doneButtonTittle = "Done"
+    static public var mainTitle = "Contacts"
+    static public var subtitleType = SubtitleType.phone
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +67,25 @@ class ContactsViewController: UIViewController {
         initButtons()
     }
     
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        fetchContacts()
+    }
+    
     convenience public init(delegate: ASContactBookPickerDelegate) {
         self.init(nibName: "ContactsViewController", bundle: nil)
         contactPickerDelegate = delegate
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    convenience public init(delegate: ASContactBookPickerDelegate, subTitle: SubtitleType) {
+        self.init(nibName: "ContactsViewController", bundle: nil)
+        contactPickerDelegate = delegate
+        ContactsViewController.subtitleType = subTitle
+    }
+    
+    private func fetchContacts() {
         ContactsData().getContactsAccess(success: { (success) in
             self.contacts = ContactsData().getAllContacts()
         }) { (error) in
@@ -66,18 +94,18 @@ class ContactsViewController: UIViewController {
     }
     
     private func setupController() {
-        title = "Contact list"
-        navigationController?.navigationBar.barTintColor = UIColor.coolBlue
+        title = ContactsViewController.mainTitle
+        navigationController?.navigationBar.barTintColor = ContactsViewController.barColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
     fileprivate func initButtons() {
         
-        let closeButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ContactsViewController.close))
+        let closeButton = UIBarButtonItem(title: ContactsViewController.cancelButtonTittle, style: .plain, target: self, action: #selector(ContactsViewController.close))
         closeButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = closeButton
         
-        doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ContactsViewController.done))
+        doneButton = UIBarButtonItem(title: ContactsViewController.doneButtonTittle, style: .plain, target: self, action: #selector(ContactsViewController.done))
         doneButton.tintColor = UIColor.white
         doneButton.isEnabled = false
         navigationItem.rightBarButtonItem = doneButton
@@ -100,8 +128,8 @@ class ContactsViewController: UIViewController {
         tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.sectionIndexColor = UIColor.darkGray
-        tableView.sectionIndexBackgroundColor = UIColor.lightText
+        tableView.sectionIndexColor = ContactsViewController.indexColor
+        tableView.sectionIndexBackgroundColor = ContactsViewController.indexBackgroundColor
     }
     
 }
@@ -120,12 +148,8 @@ extension ContactsViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
-        
-        cell.fullName.text = "\(contact.firstName) \(contact.lastName)"
-        cell.phoneNumber.text = contact.phones.first
-        cell.profileImage.image = contact.thumb
-        cell.contact = contact
-        
+        cell.setupCell(contact: contact, subtitleType: ContactsViewController.subtitleType)
+
         return cell
     }
 }
@@ -135,7 +159,7 @@ extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let cell = tableView.cellForRow(at: indexPath) as! ContactCell
-        guard let contact = cell.contact else { return }
+        guard let contact = cell.contactData else { return }
         
         if !selectedContacts.contains(contact) {
             selectedContacts.append(contact)
