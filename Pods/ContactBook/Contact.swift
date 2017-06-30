@@ -19,18 +19,6 @@ extension UIImage {
 
 class Contact: NSObject {
     
-    var contactId: String = ""
-    var firstName: String = ""
-    var lastName: String = ""
-    var jobTitle: String = ""
-    var organization: String = ""
-    var birthday: String = ""
-    var image = UIImage(named: "person")
-    var thumb = UIImage(named: "person")
-    var phones: [String] = []
-    var emails: [String] = []
-
-    
     var originPhones = [CNLabeledValue<CNPhoneNumber>]() {
         didSet {
             originPhones.forEach { phone in
@@ -56,6 +44,17 @@ class Contact: NSObject {
     }
     
 
+    
+    var contactId: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var jobTitle: String = ""
+    var organization: String = ""
+    var birthday: String = ""
+    var image = UIImage(named: "person")
+    var thumb = UIImage(named: "person")
+    var phones: [String] = []
+    var emails: [String] = []
     
     
     

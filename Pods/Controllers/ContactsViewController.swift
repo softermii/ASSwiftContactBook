@@ -23,7 +23,6 @@ enum SubtitleType {
 }
 
 
-
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -58,7 +57,6 @@ class ContactsViewController: UIViewController {
     static public var doneButtonTittle = "Done"
     static public var mainTitle = "Contacts"
     static public var subtitleType = SubtitleType.phone
-
     
     
     override func viewDidLoad() {
@@ -130,7 +128,6 @@ class ContactsViewController: UIViewController {
         tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
         tableView.sectionIndexColor = ContactsViewController.indexColor
         tableView.sectionIndexBackgroundColor = ContactsViewController.indexBackgroundColor
     }
@@ -218,8 +215,8 @@ extension ContactsViewController: UISearchBarDelegate {
             contacts = ContactsData().getAllContacts()
         }
     }
+    
 }
-
 
 
 

@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -81,7 +81,7 @@
                 <outlet property="profileImage" destination="DQF-CT-nI8" id="cH9-Mh-GAF"/>
                 <outlet property="subTitle" destination="ksV-3q-lpN" id="hjm-zP-koZ"/>
             </connections>
-            <point key="canvasLocation" x="-221" y="-59"/>
+            <point key="canvasLocation" x="-491.5" y="-232.5"/>
         </tableViewCell>
     </objects>
     <resources>
