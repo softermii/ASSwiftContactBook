@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsViewController" customModule="ASContacts" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="C4d-h4-416" id="HNx-Af-DPH"/>
+                <outlet property="tableView" destination="Itz-vx-aGd" id="qDy-BF-t3g"/>
+                <outlet property="view" destination="iN0-l3-epB" id="SaE-Nk-qnt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Itz-vx-aGd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Tap to search contacts" translucent="NO" id="C4d-h4-416">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="10" vertical="0.0"/>
+                        <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                        <scopeButtonTitles>
+                            <string>Title</string>
+                            <string>Title</string>
+                        </scopeButtonTitles>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="6tQ-XS-vEw"/>
+                        </connections>
+                    </searchBar>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SKK-ma-DDq"/>
+                        <outlet property="delegate" destination="-1" id="ZRB-WN-uZj"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Itz-vx-aGd" secondAttribute="trailing" id="5Pz-J6-QQB"/>
+                <constraint firstAttribute="bottom" secondItem="Itz-vx-aGd" secondAttribute="bottom" id="AGt-cD-II4"/>
+                <constraint firstItem="Itz-vx-aGd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YDh-rG-HdW"/>
+                <constraint firstItem="Itz-vx-aGd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZK4-Sx-R3A"/>
+            </constraints>
+            <point key="canvasLocation" x="-250" y="-25"/>
+        </view>
+    </objects>
+</document>
