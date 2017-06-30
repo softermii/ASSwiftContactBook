@@ -1,3 +1,2 @@
-## About
-
-This is custom contacts book implementation
+# ASSwiftContactBook
+Contact Book written in Swift 3.0
