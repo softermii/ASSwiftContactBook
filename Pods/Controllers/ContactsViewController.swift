@@ -127,7 +127,6 @@ class ContactsViewController: UIViewController {
     private func setupTableView() {
         tableView.register(UINib(nibName:"ContactCell", bundle: nil), forCellReuseIdentifier: "contact")
         tableView.tableFooterView = UIView()
-        tableView.prefetchDataSource = self
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
@@ -183,18 +182,6 @@ extension ContactsViewController: UITableViewDelegate {
         return category
     }
    
-    
-}
-
-extension ContactsViewController: UITableViewDataSourcePrefetching {
-    
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        debugPrint("prefetching following indexes: \(indexPaths)")
-    }
-    
-    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        debugPrint("cancel prefetching following indexes: \(indexPaths)")
-    }
     
 }
 
