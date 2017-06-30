@@ -10,11 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
+
     @IBAction func showPicker() {
         
         let contacts = ContactsViewController(delegate: self)

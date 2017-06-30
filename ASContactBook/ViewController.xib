@@ -23,7 +23,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Show Contacts"/>
                     <connections>
-                        <action selector="showPicker" destination="-1" eventType="touchUpInside" id="faG-oE-0CK"/>
+                        <action selector="showPicker" destination="-1" eventType="touchUpInside" id="bVy-HC-fus"/>
                     </connections>
                 </button>
             </subviews>
