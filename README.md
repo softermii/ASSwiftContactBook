@@ -17,6 +17,16 @@ let contacts = ContactsViewController(delegate: self, subTitle: .phone)
 let nav = UINavigationController(rootViewController: contacts)
 self.present(nav, animated: true, completion: nil)
 ```
+
+```swift
+extension ViewController: ASContactBookPickerDelegate {
+    func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact]) {
+        print(selectedContacts.count)
+        selectedContacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
+    }
+}
+```
+
 ### Options:
 - **.phone**
 - **.email**
