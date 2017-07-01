@@ -1,6 +1,10 @@
+
 # ASSwiftContactBook
 Contact Book written in Swift 3.0
 
+Supports iOS 9 and later
+
+![Swift 3.0](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
 
 ### Usage:
 ```
@@ -29,3 +33,7 @@ self.present(nav, animated: true, completion: nil)
 - [ ] Create detailed contact view
 - [ ] Implement single contact selection
 - [ ] Add call/compose email actions
+
+
+## Author:
+@antons81 - Anton Stremovskiy
