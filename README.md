@@ -13,10 +13,13 @@ pod 'ASSwiftContactBook'
 
 
 ```swift
-
+ // init contact picker with custom desire subtitle
+ 
  let contacts = ASContactPicker(subTitle: .phone)
  let nav = UINavigationController(rootViewController: contacts)
  self.present(nav, animated: true, completion: nil)
+ 
+ // implement handler for selected contacts
  
  contacts.didSelectContacts = { contacts in
       print(contacts.count)
