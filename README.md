@@ -35,8 +35,8 @@ pod 'ASSwiftContactBook'
 - **.organization**
 
 ### Screenshots:
+<img src="https://preview.ibb.co/nxkAq5/Simulator_Screen_Shot_Jul_1_2017_10_08_52.png" width="320" height="568">
 
-![Screenshot](https://preview.ibb.co/nxkAq5/Simulator_Screen_Shot_Jul_1_2017_10_08_52.png)
 
 
 ### TODO:
