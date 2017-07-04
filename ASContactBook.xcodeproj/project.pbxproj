@@ -11,8 +11,8 @@
 		1E06E7731F025EC6000E7968 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E76C1F025E29000E7968 /* ContactCell.xib */; };
 		1E06E7741F025EC6000E7968 /* Contact.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7651F025E29000E7968 /* Contact.swift */; };
 		1E06E7751F025EC6000E7968 /* ContactsData.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7661F025E29000E7968 /* ContactsData.swift */; };
-		1E06E7761F025EC6000E7968 /* ContactsViewController.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ContactsViewController.swift */; };
-		1E06E7771F025EC6000E7968 /* ContactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ContactsViewController.xib */; };
+		1E06E7761F025EC6000E7968 /* ASContactPicker.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ASContactPicker.swift */; };
+		1E06E7771F025EC6000E7968 /* ASContactPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ASContactPicker.xib */; };
 		1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7701F025E29000E7968 /* Extension+UIColor.swift */; };
 		1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7711F025E29000E7968 /* Extensions.swift */; };
 		1E32BFB61F0264CD008CCF56 /* ASContactBook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17EB1EEAD44A005B66FB /* ASContactBook.plist */; };
@@ -28,8 +28,8 @@
 		1EF78ED81F0649740025598B /* ContactsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7661F025E29000E7968 /* ContactsData.swift */; };
 		1EF78ED91F0649740025598B /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E76B1F025E29000E7968 /* ContactCell.swift */; };
 		1EF78EDA1F0649740025598B /* ContactCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E76C1F025E29000E7968 /* ContactCell.xib */; };
-		1EF78EDB1F0649740025598B /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ContactsViewController.swift */; };
-		1EF78EDC1F0649740025598B /* ContactsViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ContactsViewController.xib */; };
+		1EF78EDB1F0649740025598B /* ASContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7681F025E29000E7968 /* ASContactPicker.swift */; };
+		1EF78EDC1F0649740025598B /* ASContactPicker.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1E06E7691F025E29000E7968 /* ASContactPicker.xib */; };
 		1EF78EDD1F0649740025598B /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
 		1EF78EDE1F0649740025598B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF78ED01F0649440025598B /* ViewController.swift */; };
 		1EF78EDF1F0649740025598B /* ViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 1EF78ED11F0649440025598B /* ViewController.xib */; };
@@ -39,8 +39,8 @@
 /* Begin PBXFileReference section */
 		1E06E7651F025E29000E7968 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		1E06E7661F025E29000E7968 /* ContactsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsData.swift; sourceTree = "<group>"; };
-		1E06E7681F025E29000E7968 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
-		1E06E7691F025E29000E7968 /* ContactsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsViewController.xib; sourceTree = "<group>"; };
+		1E06E7681F025E29000E7968 /* ASContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASContactPicker.swift; sourceTree = "<group>"; };
+		1E06E7691F025E29000E7968 /* ASContactPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASContactPicker.xib; sourceTree = "<group>"; };
 		1E06E76B1F025E29000E7968 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		1E06E76C1F025E29000E7968 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
 		1E06E76E1F025E29000E7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 		1E06E7671F025E29000E7968 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1E06E7681F025E29000E7968 /* ContactsViewController.swift */,
-				1E06E7691F025E29000E7968 /* ContactsViewController.xib */,
+				1E06E7681F025E29000E7968 /* ASContactPicker.swift */,
+				1E06E7691F025E29000E7968 /* ASContactPicker.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -212,8 +212,8 @@
 				1E06E7731F025EC6000E7968 /* ContactCell.xib in Resources */,
 				1E06E7741F025EC6000E7968 /* Contact.swift in Resources */,
 				1E06E7751F025EC6000E7968 /* ContactsData.swift in Resources */,
-				1E06E7761F025EC6000E7968 /* ContactsViewController.swift in Resources */,
-				1E06E7771F025EC6000E7968 /* ContactsViewController.xib in Resources */,
+				1E06E7761F025EC6000E7968 /* ASContactPicker.swift in Resources */,
+				1E06E7771F025EC6000E7968 /* ASContactPicker.xib in Resources */,
 				1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */,
 				1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */,
 				1EAD17EA1EEAD44A005B66FB /* LaunchScreen.storyboard in Resources */,
@@ -235,8 +235,8 @@
 				1EF78ED81F0649740025598B /* ContactsData.swift in Sources */,
 				1EF78ED91F0649740025598B /* ContactCell.swift in Sources */,
 				1EF78EDA1F0649740025598B /* ContactCell.xib in Sources */,
-				1EF78EDB1F0649740025598B /* ContactsViewController.swift in Sources */,
-				1EF78EDC1F0649740025598B /* ContactsViewController.xib in Sources */,
+				1EF78EDB1F0649740025598B /* ASContactPicker.swift in Sources */,
+				1EF78EDC1F0649740025598B /* ASContactPicker.xib in Sources */,
 				1EF78EDD1F0649740025598B /* Assets.xcassets in Sources */,
 				1EF78EDE1F0649740025598B /* ViewController.swift in Sources */,
 				1EF78EDF1F0649740025598B /* ViewController.xib in Sources */,

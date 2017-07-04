@@ -73,17 +73,17 @@ class ContactsData: NSObject {
 
         switch status {
         case .denied, .restricted:
-            print("denied")
+            debugPrint("denied")
             failure((error)!)
             return
         case .notDetermined:
-            print("not determined")
+            debugPrint("not determined")
             contactsStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
                 if (error != nil) { return }
             })
             success(true)
         default:
-            print("already authorized")
+            debugPrint("already authorized")
             success(true)
             return
         }

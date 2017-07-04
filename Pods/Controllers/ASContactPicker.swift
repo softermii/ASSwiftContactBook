@@ -10,10 +10,6 @@ import UIKit
 import Contacts
 
 
-protocol ASContactBookPickerDelegate: class {
-    func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact])
-}
-
 enum SubtitleType {
     case email
     case phone
@@ -24,13 +20,14 @@ enum SubtitleType {
 
 
 
-class ContactsViewController: UIViewController {
+class ASContactPicker: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var doneButton: UIBarButtonItem!
-    open weak var contactPickerDelegate: ASContactBookPickerDelegate?
+    
+    public var didSelectContacts: ((_ selectedContacts: [Contact]) -> Void)? = nil
     
     var category = [String]()
     
@@ -38,7 +35,6 @@ class ContactsViewController: UIViewController {
         didSet {
             category = Array(Set(self.contacts.map { String($0.firstName.substring(to: 1).uppercased() ) })).sorted
                 { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
-            print(category)
             tableView.reloadData()
         }
     }
@@ -76,38 +72,36 @@ class ContactsViewController: UIViewController {
         fetchContacts()
     }
     
-    convenience public init(delegate: ASContactBookPickerDelegate) {
-        self.init(nibName: "ContactsViewController", bundle: nil)
-        contactPickerDelegate = delegate
+    convenience public init() {
+        self.init(nibName: "ASContactPicker", bundle: nil)
     }
     
-    convenience public init(delegate: ASContactBookPickerDelegate, subTitle: SubtitleType) {
-        self.init(nibName: "ContactsViewController", bundle: nil)
-        contactPickerDelegate = delegate
-        ContactsViewController.subtitleType = subTitle
+    convenience public init(subTitle: SubtitleType) {
+        self.init(nibName: "ASContactPicker", bundle: nil)
+        ASContactPicker.subtitleType = subTitle
     }
     
     private func fetchContacts() {
         ContactsData().getContactsAccess(success: { (success) in
             self.contacts = ContactsData().getAllContacts()
         }) { (error) in
-            print(error.localizedDescription)
+            debugPrint(error.localizedDescription)
         }
     }
     
     private func setupController() {
-        title = ContactsViewController.mainTitle
-        navigationController?.navigationBar.barTintColor = ContactsViewController.barColor
+        title = ASContactPicker.mainTitle
+        navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
     
     fileprivate func initButtons() {
         
-        let closeButton = UIBarButtonItem(title: ContactsViewController.cancelButtonTittle, style: .plain, target: self, action: #selector(ContactsViewController.close))
+        let closeButton = UIBarButtonItem(title: ASContactPicker.cancelButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.close))
         closeButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = closeButton
         
-        doneButton = UIBarButtonItem(title: ContactsViewController.doneButtonTittle, style: .plain, target: self, action: #selector(ContactsViewController.done))
+        doneButton = UIBarButtonItem(title: ASContactPicker.doneButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.done))
         doneButton.tintColor = UIColor.white
         doneButton.isEnabled = false
         navigationItem.rightBarButtonItem = doneButton
@@ -119,8 +113,8 @@ class ContactsViewController: UIViewController {
     }
     
     @objc private func done() {
-        self.dismiss(animated: true) { 
-            self.contactPickerDelegate?.didSelectContacts(self, selectedContacts: self.selectedContacts)
+        self.dismiss(animated: true) {
+            self.didSelectContacts?(self.selectedContacts)
         }
     }
     
@@ -130,13 +124,13 @@ class ContactsViewController: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
-        tableView.sectionIndexColor = ContactsViewController.indexColor
-        tableView.sectionIndexBackgroundColor = ContactsViewController.indexBackgroundColor
+        tableView.sectionIndexColor = ASContactPicker.indexColor
+        tableView.sectionIndexBackgroundColor = ASContactPicker.indexBackgroundColor
     }
     
 }
 
-extension ContactsViewController: UITableViewDataSource {
+extension ASContactPicker: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return category.count
@@ -150,13 +144,13 @@ extension ContactsViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
-        cell.setupCell(contact: contact, subtitleType: ContactsViewController.subtitleType)
+        cell.setupCell(contact: contact, subtitleType: ASContactPicker.subtitleType)
 
         return cell
     }
 }
 
-extension ContactsViewController: UITableViewDelegate {
+extension ASContactPicker: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -186,7 +180,7 @@ extension ContactsViewController: UITableViewDelegate {
 }
 
 
-extension ContactsViewController: UISearchBarDelegate {
+extension ASContactPicker: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
