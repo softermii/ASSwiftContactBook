@@ -14,10 +14,10 @@ pod 'ASSwiftContactBook'
 
 ```swift
 
- let contacts = ContactsViewController(subTitle: .phone)
-        let nav = UINavigationController(rootViewController: contacts)
-        self.present(nav, animated: true, completion: nil)
-        
+ let contacts = ASContactPicker(subTitle: .phone)
+ let nav = UINavigationController(rootViewController: contacts)
+ self.present(nav, animated: true, completion: nil)
+ 
  contacts.didSelectContacts = { contacts in
       print(contacts.count)
       contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
