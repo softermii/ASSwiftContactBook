@@ -13,18 +13,19 @@ pod 'ASSwiftContactBook'
 
 
 ```swift
-let contacts = ContactsViewController(delegate: self, subTitle: .phone)
-let nav = UINavigationController(rootViewController: contacts)
-self.present(nav, animated: true, completion: nil)
-```
+ // init contact picker with custom desire subtitle
+ 
+ let contacts = ASContactPicker(subTitle: .phone)
+ let nav = UINavigationController(rootViewController: contacts)
+ self.present(nav, animated: true, completion: nil)
+ 
+ // implement handler for selected contacts
+ 
+ contacts.didSelectContacts = { contacts in
+      print(contacts.count)
+      contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
+ }
 
-```swift
-extension ViewController: ASContactBookPickerDelegate {
-    func didSelectContacts(_: ContactsViewController, selectedContacts: [Contact]) {
-        print(selectedContacts.count)
-        selectedContacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
-    }
-}
 ```
 
 ### Options:
