@@ -13,13 +13,17 @@ class ViewController: UIViewController {
 
     @IBAction func showPicker() {
         
-        let contacts = ASContactPicker(subTitle: .phone)
+        let contacts = ASContactPicker(subTitle: .phone, multipleSelection: true)
         let nav = UINavigationController(rootViewController: contacts)
         self.present(nav, animated: true, completion: nil)
         
         contacts.didSelectContacts = { contacts in
             debugPrint(contacts.count)
             contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
+        }
+        
+        contacts.didSelectSingleContact = { contact in
+            debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
         }
     } 
 }
