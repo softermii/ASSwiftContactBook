@@ -9,6 +9,7 @@
 import Foundation
 
 extension String {
+    
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
     }
@@ -27,5 +28,10 @@ extension String {
         let startIndex = index(from: r.lowerBound)
         let endIndex = index(from: r.upperBound)
         return substring(with: startIndex..<endIndex)
+    }
+    
+    var digits: String {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted)
+            .joined()
     }
 }

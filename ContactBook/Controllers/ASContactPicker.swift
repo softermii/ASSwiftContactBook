@@ -20,6 +20,8 @@ enum SubtitleType {
 
 
 
+
+
 class ASContactPicker: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +30,7 @@ class ASContactPicker: UIViewController {
     var doneButton: UIBarButtonItem!
     
     public var didSelectContacts: ((_ selectedContacts: [Contact]) -> Void)? = nil
+    public var didSelectSingleContact: ((_ selectedContact: Contact) -> Void)? = nil
     
     var category = [String]()
     
@@ -54,6 +57,7 @@ class ASContactPicker: UIViewController {
     static public var doneButtonTittle = "Done"
     static public var mainTitle = "Contacts"
     static public var subtitleType = SubtitleType.phone
+    var multiSelection = true
 
     
     
@@ -80,6 +84,13 @@ class ASContactPicker: UIViewController {
         self.init(nibName: "ASContactPicker", bundle: nil)
         ASContactPicker.subtitleType = subTitle
     }
+    
+    convenience public init(subTitle: SubtitleType, multipleSelection: Bool) {
+        self.init(nibName: "ASContactPicker", bundle: nil)
+        ASContactPicker.subtitleType = subTitle
+        multiSelection = multipleSelection
+    }
+
     
     private func fetchContacts() {
         ContactsData().getContactsAccess(success: { (success) in
@@ -157,12 +168,19 @@ extension ASContactPicker: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! ContactCell
         guard let contact = cell.contactData else { return }
         
-        if !selectedContacts.contains(contact) {
-            selectedContacts.append(contact)
-            cell.accessoryType = .checkmark
+        if multiSelection {
+            if !selectedContacts.contains(contact) {
+                selectedContacts.append(contact)
+                cell.accessoryType = .checkmark
+            } else {
+                selectedContacts   = selectedContacts.filter { $0.contactId != contact.contactId }
+                cell.accessoryType = .none
+            }
         } else {
             selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
-            cell.accessoryType = .none
+            self.dismiss(animated: true, completion: {
+                self.didSelectSingleContact?(contact)
+            })
         }
         
         debugPrint("Selected \(selectedContacts.count) contacts")
