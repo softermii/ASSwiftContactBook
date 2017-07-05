@@ -4,8 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="373" height="51"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oMD-3z-IGi" id="zjG-oV-6cl">
-                <rect key="frame" x="0.0" y="0.0" width="373" height="50.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="373" height="51"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z4X-4a-EI1">
@@ -45,7 +44,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-1P-Ett">
-                                <rect key="frame" x="50" y="5" width="318" height="40.5"/>
+                                <rect key="frame" x="50" y="5" width="283" height="40.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBk-zk-vOK">
                                         <rect key="frame" x="0.0" y="0.0" width="39.5" height="18"/>
@@ -60,6 +59,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xRk-qV-bOR">
+                                <rect key="frame" x="338" y="14.5" width="30" height="22"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uncheck" translatesAutoresizingMaskIntoConstraints="NO" id="Oyd-xZ-JRs">
+                                        <rect key="frame" x="4" y="0.0" width="22" height="22"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Kz9-ve-Yw1"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <constraints>
@@ -79,6 +89,7 @@
             <connections>
                 <outlet property="fullName" destination="iBk-zk-vOK" id="CSS-UV-SD7"/>
                 <outlet property="profileImage" destination="DQF-CT-nI8" id="cH9-Mh-GAF"/>
+                <outlet property="select" destination="Oyd-xZ-JRs" id="aDt-km-RwQ"/>
                 <outlet property="subTitle" destination="ksV-3q-lpN" id="hjm-zP-koZ"/>
             </connections>
             <point key="canvasLocation" x="-221" y="-59"/>
@@ -86,5 +97,6 @@
     </objects>
     <resources>
         <image name="person" width="50" height="50"/>
+        <image name="uncheck" width="22" height="22"/>
     </resources>
 </document>

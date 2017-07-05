@@ -13,13 +13,15 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var select: UIImageView!
+    
     
     var contactData: Contact?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImage.image = UIImage(named: "person")
-        
+        select.tintColor = ASContactPicker.barColor
     }
     
     
