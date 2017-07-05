@@ -27,10 +27,11 @@ pod 'ASSwiftContactBook'
  }
 
 // init handler for single contact
-   contacts.didSelectSingleContact = { contact in
-      debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
-   }
- }
+contacts.didSelectSingleContact = { contact in
+   debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
+}
+  
+}
 
 ```
 
