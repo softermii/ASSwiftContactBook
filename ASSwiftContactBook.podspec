@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
   s.source_files                = 'Pods/**/*.{swift}'
-  s.resources			= 'Pods/**/*.{xib}', 'Pods/**/Assets.xcasset/**/*.{png}'
+  s.resources			= 'Pods/**/*.{xib,xcassets}'
   s.ios.frameworks              = 'UIKit', 'Contacts'
   s.ios.deployment_target       = '9.0'
 end
