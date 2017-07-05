@@ -15,21 +15,21 @@ pod 'ASSwiftContactBook'
 ```swift
  // init contact picker with custom desire subtitle
  
- let contacts = ASContactPicker(subTitle: .phone)
- let nav = UINavigationController(rootViewController: contacts)
- self.present(nav, animated: true, completion: nil)
+ func showContactPicker {
+   let contacts = ASContactPicker(subTitle: .phone)
+   let nav = UINavigationController(rootViewController: contacts)
+   self.present(nav, animated: true, completion: nil)
  
  // init handler for selected contacts
- 
  contacts.didSelectContacts = { contacts in
       print(contacts.count)
       contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
  }
 
 // init handler for single contact
-
- contacts.didSelectSingleContact = { contact in
-            debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
+   contacts.didSelectSingleContact = { contact in
+      debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
+   }
  }
 
 ```
