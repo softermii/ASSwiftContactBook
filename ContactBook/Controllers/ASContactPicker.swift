@@ -135,7 +135,7 @@ class ASContactPicker: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
-        tableView.sectionIndexColor = ASContactPicker.indexColor
+        tableView.sectionIndexColor = ASContactPicker.barColor
         tableView.sectionIndexBackgroundColor = ASContactPicker.indexBackgroundColor
     }
     
@@ -172,11 +172,11 @@ extension ASContactPicker: UITableViewDelegate {
             if !selectedContacts.contains(contact) {
                 selectedContacts.append(contact)
                 //cell.accessoryType = .checkmark
-                cell.select.image = UIImage(named: "check")?.withRenderingMode(.alwaysTemplate)
+                cell.select.image = UIImage(named: "check")
             } else {
                 selectedContacts   = selectedContacts.filter { $0.contactId != contact.contactId }
                 //cell.accessoryType = .none
-                cell.select.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysTemplate)
+                cell.select.image = UIImage(named: "uncheck")
             }
         } else {
             selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }

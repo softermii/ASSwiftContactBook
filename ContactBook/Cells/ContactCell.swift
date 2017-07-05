@@ -21,7 +21,7 @@ class ContactCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImage.image = UIImage(named: "person")
-        select.tintColor = ASContactPicker.barColor
+        //select.tintColor = ASContactPicker.barColor
     }
     
     
