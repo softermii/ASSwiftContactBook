@@ -19,11 +19,17 @@ pod 'ASSwiftContactBook'
  let nav = UINavigationController(rootViewController: contacts)
  self.present(nav, animated: true, completion: nil)
  
- // implement handler for selected contacts
+ // init handler for selected contacts
  
  contacts.didSelectContacts = { contacts in
       print(contacts.count)
       contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
+ }
+
+// init handler for single contact
+
+ contacts.didSelectSingleContact = { contact in
+            debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
  }
 
 ```
