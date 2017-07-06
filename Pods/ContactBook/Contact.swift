@@ -10,28 +10,28 @@ import Foundation
 import Contacts
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     public func getImageFromData(data: Data?) -> UIImage? {
         guard let data = data else { return UIImage(named: "person") }
         return UIImage(data: data)
     }
 }
 
-class Contact: NSObject {
+open class Contact: NSObject {
     
-    var contactId: String = ""
-    var firstName: String = ""
-    var lastName: String = ""
-    var jobTitle: String = ""
-    var organization: String = ""
-    var birthday: String = ""
-    var image = UIImage(named: "person")
-    var thumb = UIImage(named: "person")
-    var phones: [String] = []
-    var emails: [String] = []
-
+    public var contactId: String    = ""
+    public var firstName: String    = ""
+    public var lastName: String     = ""
+    public var jobTitle: String     = ""
+    public var organization: String = ""
+    public var birthday: String     = ""
+    public var image                = UIImage(named: "person")
+    public var thumb                = UIImage(named: "person")
+    public var phones: [String]     = []
+    public var emails: [String]     = []
     
-    var originPhones = [CNLabeledValue<CNPhoneNumber>]() {
+    
+    public var originPhones = [CNLabeledValue<CNPhoneNumber>]() {
         didSet {
             originPhones.forEach { phone in
                 phones.append(phone.value.stringValue)
@@ -39,7 +39,7 @@ class Contact: NSObject {
         }
     }
     
-    var originEmails = [CNLabeledValue<NSString>]() {
+    public var originEmails = [CNLabeledValue<NSString>]() {
         didSet {
             originEmails.forEach { email in
                 emails.append((email.value as NSString) as String)
@@ -47,7 +47,7 @@ class Contact: NSObject {
         }
     }
     
-    var birthdayDate = Date() {
+    public var birthdayDate = Date() {
         didSet {
             let formatter = DateFormatter()
             formatter.dateFormat = "MM/dd/YYYY"
@@ -55,7 +55,7 @@ class Contact: NSObject {
         }
     }
     
-
+    
     
     
     

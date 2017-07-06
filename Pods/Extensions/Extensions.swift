@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
