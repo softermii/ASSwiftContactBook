@@ -73,16 +73,19 @@ open class ASContactPicker: UIViewController {
     }
     
     convenience public init() {
-        self.init(nibName: "ASContactPicker", bundle: nil)
+        let bundle = Bundle(for: ASContactPicker.self)
+        self.init(nibName: "ASContactPicker", bundle: bundle)
     }
     
     convenience  public init(subTitle: SubtitleType) {
-        self.init(nibName: "ASContactPicker", bundle: nil)
+        let bundle = Bundle(for: ASContactPicker.self)
+        self.init(nibName: "ASContactPicker", bundle: bundle)
         subtitleType = subTitle
     }
     
     convenience public init(subTitle: SubtitleType, multipleSelection: Bool) {
-        self.init(nibName: "ASContactPicker", bundle: nil)
+        let bundle = Bundle(for: ASContactPicker.self)
+        self.init(nibName: "ASContactPicker", bundle: bundle)
         subtitleType = subTitle
         multiSelection = multipleSelection
     }
@@ -126,7 +129,8 @@ open class ASContactPicker: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(UINib(nibName:"ContactCell", bundle: nil), forCellReuseIdentifier: "contact")
+        let bundle = Bundle(for: ContactCell.self)
+        tableView.register(UINib(nibName:"ContactCell", bundle: bundle), forCellReuseIdentifier: "contact")
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
