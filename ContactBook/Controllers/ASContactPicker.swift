@@ -18,8 +18,6 @@ public enum SubtitleType {
     case job
 }
 
-
-
 open class ASContactPicker: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
