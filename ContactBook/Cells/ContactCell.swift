@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactCell: UITableViewCell {
+open class ContactCell: UITableViewCell {
     
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var subTitle: UILabel!
@@ -18,10 +18,10 @@ class ContactCell: UITableViewCell {
     
     var contactData: Contact?
     
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         profileImage.image = UIImage(named: "person")
-        //select.tintColor = ASContactPicker.barColor
+        //select.tintColor = barColor
     }
     
     
@@ -45,7 +45,7 @@ class ContactCell: UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
+    override open func prepareForReuse() {
         super.prepareForReuse()
         profileImage.image = UIImage(named: "person")
         fullName.text = nil
