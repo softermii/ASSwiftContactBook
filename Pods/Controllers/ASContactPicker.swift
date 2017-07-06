@@ -171,12 +171,10 @@ extension ASContactPicker: UITableViewDelegate {
         if multiSelection {
             if !selectedContacts.contains(contact) {
                 selectedContacts.append(contact)
-                //cell.accessoryType = .checkmark
-                cell.select.image = UIImage(named: "check")
+                cell.select.image = UIImage(named: "contactSelected")
             } else {
                 selectedContacts   = selectedContacts.filter { $0.contactId != contact.contactId }
-                //cell.accessoryType = .none
-                cell.select.image = UIImage(named: "uncheck")
+                cell.select.image = UIImage(named: "contactDeselected")
             }
         } else {
             selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
