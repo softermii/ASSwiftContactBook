@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                        = "ASSwiftContactBook"
-  s.version                     = '1.0.5'
+  s.version                     = '1.0.6'
   s.summary                     = "Custom Contact Book picker written in Swift 3.0"
   s.homepage                    = 'http://twitter.com/anton__dev'
   s.social_media_url            = 'http://twitter.com/anton__dev'
@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
   s.source_files                = 'Pods/**/*.{swift,xib,png}'
+  s.resources			= 'Pods/**/*.{xcassets}'
   s.ios.frameworks              = 'UIKit', 'Contacts'
   s.ios.deployment_target       = '9.0'
 end
