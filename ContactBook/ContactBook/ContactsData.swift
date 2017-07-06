@@ -41,13 +41,13 @@ class ContactsData: NSObject {
     
         try? contactsStore.enumerateContacts(with: request, usingBlock: { (person, pointer) in
 
-            let contact = Contact()
-            contact.firstName = person.givenName
-            contact.lastName = person.familyName
+            let contact          = Contact()
+            contact.firstName    = person.givenName
+            contact.lastName     = person.familyName
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
-            contact.contactId = person.identifier
-            contact.jobTitle = person.jobTitle
+            contact.contactId    = person.identifier
+            contact.jobTitle     = person.jobTitle
             
             if let date = person.birthday?.date {
                 contact.birthdayDate = date

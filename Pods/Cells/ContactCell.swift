@@ -20,7 +20,8 @@ open class ContactCell: UITableViewCell {
     
     override open func awakeFromNib() {
         super.awakeFromNib()
-        profileImage.image = UIImage(named: "person")
+        let bundle = Bundle(for: ContactCell.self)
+        profileImage.image = UIImage(named: "person", in: bundle, compatibleWith: nil)
         //select.tintColor = barColor
     }
     
