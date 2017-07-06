@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.requires_arc                = true
   s.source_files                = 'Pods/**/*.{swift,xib,xcassets}'
   s.resources			= 'Pods/**/*.{xib,xcassets}'
-  s.resource_bundle 		= { 'ASSwiftContactBook' => ['Pods/Assets.xcassetsi/**/*.{png}'] }
+  s.ios.resource_bundle 	= { 'Resources' => ['Pods/**/*.xcassets'] }  
   s.ios.frameworks              = 'UIKit', 'Contacts'
   s.ios.deployment_target       = '9.0'
 end
