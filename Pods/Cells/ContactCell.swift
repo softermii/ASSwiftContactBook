@@ -28,9 +28,11 @@ open class ContactCell: UITableViewCell {
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
         
+        let bundle = Bundle(for: ASContactPicker.self)
         contactData = contact
+        
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
-        profileImage.image = contact.thumb
+        profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
         
         switch subtitleType {
         case .phone:
