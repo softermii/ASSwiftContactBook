@@ -6,17 +6,17 @@ Supports iOS 9 and later
 
 ![Swift 3.0](https://img.shields.io/badge/Swift-3.0-green.svg?style=flat)
 
-### Usage:
+### Install:
 ```
 pod 'ASSwiftContactBook'
 ```
 
-
+### Usage:
 ```swift
  // init contact picker with custom desire subtitle
  
  func showContactPicker {
-   let contacts = ASContactPicker(subTitle: .phone)
+   let contacts = ASContactPicker(subTitle: .phone, multipleSelection: true) // true by default
    let nav = UINavigationController(rootViewController: contacts)
    self.present(nav, animated: true, completion: nil)
  
@@ -26,7 +26,7 @@ pod 'ASSwiftContactBook'
       contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
  }
 
-// init handler for single contact
+// init handler for single contact, in case you choosed single selection
 contacts.didSelectSingleContact = { contact in
    debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
 }
