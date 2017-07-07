@@ -1,6 +1,6 @@
 
 # ASSwiftContactBook
-Contact Book written in Swift 3.0
+ContactBook Picker written in Swift
 
 Supports iOS 9 and later
 
