@@ -15,21 +15,23 @@ open class ContactCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var select: UIImageView!
     
-    
+    var contactDetail: ((_ contact: Contact) -> Void)? = nil
     var contactData: Contact?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
-        profileImage.image = UIImage(named: "person")
-        //select.tintColor = barColor
+    func setupDetailTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactCell.onImageTap))
+        profileImage.addGestureRecognizer(tap)
     }
     
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
         
+        let bundle = Bundle(for: ASContactPicker.self)
+        
         contactData = contact
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
-        profileImage.image = contact.thumb
+        profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
+        setupDetailTap()
         
         switch subtitleType {
         case .phone:
@@ -43,6 +45,11 @@ open class ContactCell: UITableViewCell {
         case .birthday:
             subTitle.text = "Birthday: \(contact.birthday)"
         }
+    }
+    
+    func onImageTap() {
+        guard let contact = contactData else { return }
+        contactDetail?(contact)
     }
     
     override open func prepareForReuse() {

@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 
 
+
 public enum SubtitleType {
     case email
     case phone
@@ -153,9 +154,18 @@ extension ASContactPicker: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let bundle = Bundle(for: ASContactPicker.self)
+        
+
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
         cell.setupCell(contact: contact, subtitleType: subtitleType)
+        cell.contactDetail = { contact in
+            let detail = ContactDetailController(nibName: String(describing: ContactDetailController.self), bundle: bundle)
+            detail.contact = contact
+            self.show(detail, sender: self)
+        }
         
         return cell
     }
