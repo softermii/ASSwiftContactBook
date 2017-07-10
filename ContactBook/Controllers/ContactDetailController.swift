@@ -26,15 +26,22 @@ class ContactDetailController: UIViewController {
         super.viewDidLoad()
         
         setupController()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        setupTableView()
     }
     
     fileprivate func setupController() {
         guard let contact = contact else { return }
         title = "\(contact.firstName)  \(contact.lastName)"
-        navigationController?.navigationBar.barTintColor = .coolBlue
+        navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
+                                                                   NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
+    }
+    
+    fileprivate func setupTableView() {
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
     
 }
@@ -42,12 +49,20 @@ class ContactDetailController: UIViewController {
 extension ContactDetailController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let contact = contact else { return 1 }
+        return contact.phoneLabels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "test"
+        guard let contact = contact else { return UITableViewCell() }
+        let cell: UITableViewCell = {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
+                return UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+            }
+            return cell
+        }()
+        cell.textLabel?.text = contact.phones[indexPath.row]
+        cell.detailTextLabel?.text = contact.phoneLabels[indexPath.row]
         return cell
     }
 }

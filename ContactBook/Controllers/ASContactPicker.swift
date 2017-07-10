@@ -47,8 +47,8 @@ open class ASContactPicker: UIViewController {
     
     
     // MARK: - Settings
-    public var barColor = UIColor.coolBlue
-    public var indexColor = UIColor.coolBlue
+    public static var barColor = UIColor.coolBlue
+    public static var indexColor = barColor
     public var indexBackgroundColor = UIColor.lightText
     public var cancelButtonTittle = "Cancel"
     public var doneButtonTittle = "Done"
@@ -84,11 +84,12 @@ open class ASContactPicker: UIViewController {
         subtitleType = subTitle
     }
     
-    convenience public init(subTitle: SubtitleType, multipleSelection: Bool) {
+    convenience public init(subTitle: SubtitleType, multipleSelection: Bool, barColor: UIColor = .coolBlue) {
         let bundle = Bundle(for: ASContactPicker.self)
         self.init(nibName: "ASContactPicker", bundle: bundle)
         subtitleType = subTitle
         multiSelection = multipleSelection
+        ASContactPicker.barColor = barColor
     }
     
     
@@ -102,8 +103,9 @@ open class ASContactPicker: UIViewController {
     
     private func setupController() {
         title = mainTitle
-        navigationController?.navigationBar.barTintColor = barColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
+                                                                   NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
     }
     
     fileprivate func initButtons() {
@@ -136,7 +138,7 @@ open class ASContactPicker: UIViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
-        tableView.sectionIndexColor = indexColor
+        tableView.sectionIndexColor = ASContactPicker.indexColor
         tableView.sectionIndexBackgroundColor = indexBackgroundColor
     }
     
