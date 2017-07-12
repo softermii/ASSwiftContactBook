@@ -75,7 +75,20 @@ extension ContactDetailController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         guard let contact = contact else { return 1 }
+        
+        switch section {
+        case 0:
+            return contact.phones.count
+        case 1:
+            return contact.emails.count
+        case 2:
+            return 1
+        default:
+            break
+        }
+
         return contact.phoneLabels.count
     }
     
@@ -83,7 +96,17 @@ extension ContactDetailController: UITableViewDataSource {
         
         guard let contact = contact else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! ContactDetailCell
-        cell.setupCell(contact.phones[indexPath.row], type: contact.phoneLabels[indexPath.row])
+        switch indexPath.section {
+        case 0:
+            cell.setupCell(contact.phones[indexPath.row], type: contact.phoneLabels[indexPath.row])
+        case 1:
+            cell.setupCell(contact.emails[indexPath.row], type: contact.emailLabels[indexPath.row])
+        case 2:
+            cell.setupCell(contact.birthday, type: "")
+        default:
+            break
+        }
+        
         return cell
     }
 }
