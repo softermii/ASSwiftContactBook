@@ -17,8 +17,13 @@ class ContactDetailController: UIViewController {
     
     
     convenience public init() {
+        
         let bundle = Bundle(for: ASContactPicker.self)
         self.init(nibName: "ContactDetailController", bundle: bundle)
+    }
+    
+    fileprivate func categories() -> [String] {
+        return ["phones", "emails", "birthday"]
     }
 
     
@@ -30,15 +35,17 @@ class ContactDetailController: UIViewController {
     }
     
     fileprivate func setupController() {
+        
         guard let contact = contact else { return }
         title = "\(contact.firstName)  \(contact.lastName)"
         navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
-                                                                   NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
+                                                                NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
     }
     
     func createHeader(_ contact: Contact) -> UIView {
+        
         if let view = Bundle.main.loadNibNamed("ContactHeader", owner: self, options: nil)?[0] as? ContactHeader {
             view.setupHeader(contact)
             return view
@@ -47,7 +54,12 @@ class ContactDetailController: UIViewController {
     }
     
     fileprivate func setupTableView() {
+        
         guard let contact = contact else { return }
+        let bundle = Bundle(for: ASContactPicker.self)
+        tableView.register(UINib(nibName: String(describing: ContactDetailCell.self), bundle: bundle),
+                                                forCellReuseIdentifier: "detailCell")
+        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
@@ -59,7 +71,7 @@ class ContactDetailController: UIViewController {
 extension ContactDetailController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return categories().count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,15 +80,10 @@ extension ContactDetailController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let contact = contact else { return UITableViewCell() }
-        let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
-                return UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-            }
-            return cell
-        }()
-        cell.textLabel?.text = contact.phones[indexPath.row]
-        cell.detailTextLabel?.text = contact.phoneLabels[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! ContactDetailCell
+        cell.setupCell(contact.phones[indexPath.row], type: contact.phoneLabels[indexPath.row])
         return cell
     }
 }

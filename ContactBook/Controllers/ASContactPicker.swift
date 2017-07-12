@@ -68,12 +68,6 @@ open class ASContactPicker: UIViewController {
         fetchContacts()
     }
     
-    
-    override open func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     convenience public init() {
         let bundle = Bundle(for: ASContactPicker.self)
         self.init(nibName: "ASContactPicker", bundle: bundle)
@@ -92,7 +86,6 @@ open class ASContactPicker: UIViewController {
         multiSelection = multipleSelection
         ASContactPicker.barColor = barColor
     }
-    
     
     private func fetchContacts() {
         ContactsData().getContactsAccess(success: { (success) in
@@ -123,17 +116,20 @@ open class ASContactPicker: UIViewController {
     
     
     @objc private func close() {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func done() {
+        
         self.dismiss(animated: true) {
             self.didSelectContacts?(self.selectedContacts)
         }
     }
     
     private func setupTableView() {
-        let bundle = Bundle(for: ContactCell.self)
+        
+        let bundle = Bundle(for: ASContactPicker.self)
         tableView.register(UINib(nibName:"ContactCell", bundle: bundle), forCellReuseIdentifier: "contact")
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
@@ -148,19 +144,19 @@ open class ASContactPicker: UIViewController {
 extension ASContactPicker: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
+        
         return category.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return contacts.filter { $0.firstName.substring(to: 1) == category[section] }.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let bundle = Bundle(for: ASContactPicker.self)
-        
 
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
         cell.setupCell(contact: contact, subtitleType: subtitleType)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactHeader: UIView {
+open class ContactHeader: UIView {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
@@ -23,6 +23,5 @@ class ContactHeader: UIView {
         profileDescription.text = contact.jobTitle + "\n\n" + contact.organization
         
     }
-    
-    
+ 
 }
