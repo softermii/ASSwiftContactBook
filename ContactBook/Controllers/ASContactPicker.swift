@@ -64,13 +64,14 @@ open class ASContactPicker: UIViewController {
         setupTableView()
         setupController()
         initButtons()
+        
+        fetchContacts()
     }
     
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        fetchContacts()
     }
     
     convenience public init() {
@@ -171,6 +172,7 @@ extension ASContactPicker: UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 extension ASContactPicker: UITableViewDelegate {
@@ -185,7 +187,7 @@ extension ASContactPicker: UITableViewDelegate {
                 selectedContacts.append(contact)
                 cell.select.image = UIImage(named: "check")
             } else {
-                selectedContacts   = selectedContacts.filter { $0.contactId != contact.contactId }
+                selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
                 cell.select.image = UIImage(named: "uncheck")
             }
         } else {

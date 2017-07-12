@@ -55,7 +55,6 @@ class ContactsData: NSObject {
             
             contact.organization = person.organizationName
       
-            
             if let image = person.imageData, let thumb = person.thumbnailImageData {
                 contact.image = UIImage(data: image)
                 contact.thumb = UIImage(data: thumb)

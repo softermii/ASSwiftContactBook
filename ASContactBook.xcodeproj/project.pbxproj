@@ -16,6 +16,9 @@
 		1E06E7781F025EC6000E7968 /* Extension+UIColor.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7701F025E29000E7968 /* Extension+UIColor.swift */; };
 		1E06E7791F025EC6000E7968 /* Extensions.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E7711F025E29000E7968 /* Extensions.swift */; };
 		1E32BFB61F0264CD008CCF56 /* ASContactBook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17EB1EEAD44A005B66FB /* ASContactBook.plist */; };
+		1E47054A1F162B0800E54DDB /* ContactHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E4705491F162B0800E54DDB /* ContactHeader.xib */; };
+		1E47054C1F162B1300E54DDB /* ContactHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47054B1F162B1300E54DDB /* ContactHeader.swift */; };
+		1E47054D1F162B3B00E54DDB /* ContactHeader.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E47054B1F162B1300E54DDB /* ContactHeader.swift */; };
 		1E93899C1F0267E500C0E596 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E76E1F025E29000E7968 /* AppDelegate.swift */; };
 		1E93899E1F02680D00C0E596 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0BE78A1F025CB900D6850B /* Default-568h@2x.png */; };
 		1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
@@ -51,6 +54,8 @@
 		1E06E7701F025E29000E7968 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		1E06E7711F025E29000E7968 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1E0BE78A1F025CB900D6850B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1E4705491F162B0800E54DDB /* ContactHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactHeader.xib; sourceTree = "<group>"; };
+		1E47054B1F162B1300E54DDB /* ContactHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactHeader.swift; sourceTree = "<group>"; };
 		1EAD17DC1EEAD44A005B66FB /* ASContactBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASContactBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAD17E61EEAD44A005B66FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EAD17E91EEAD44A005B66FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -164,6 +169,8 @@
 		1EE808DA1F139ACF00BDBFF4 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				1E4705491F162B0800E54DDB /* ContactHeader.xib */,
+				1E47054B1F162B1300E54DDB /* ContactHeader.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -227,11 +234,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E47054D1F162B3B00E54DDB /* ContactHeader.swift in Resources */,
 				1EE808D11F13836E00BDBFF4 /* ContactDetailController.swift in Resources */,
 				1EF78EE11F0656DD0025598B /* ViewController.swift in Resources */,
 				1EF78ED31F0649440025598B /* ViewController.xib in Resources */,
 				1E93899E1F02680D00C0E596 /* Default-568h@2x.png in Resources */,
 				1E93899C1F0267E500C0E596 /* AppDelegate.swift in Resources */,
+				1E47054A1F162B0800E54DDB /* ContactHeader.xib in Resources */,
 				1E32BFB61F0264CD008CCF56 /* ASContactBook.plist in Resources */,
 				1E06E7721F025EC6000E7968 /* ContactCell.swift in Resources */,
 				1E06E7731F025EC6000E7968 /* ContactCell.xib in Resources */,
@@ -262,6 +271,7 @@
 				1EF78ED71F0649740025598B /* Contact.swift in Sources */,
 				1EF78ED81F0649740025598B /* ContactsData.swift in Sources */,
 				1EF78ED91F0649740025598B /* ContactCell.swift in Sources */,
+				1E47054C1F162B1300E54DDB /* ContactHeader.swift in Sources */,
 				1EF78EDA1F0649740025598B /* ContactCell.xib in Sources */,
 				1EF78EDB1F0649740025598B /* ASContactPicker.swift in Sources */,
 				1EF78EDC1F0649740025598B /* ASContactPicker.xib in Sources */,

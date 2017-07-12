@@ -38,15 +38,29 @@ class ContactDetailController: UIViewController {
                                                                    NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
     }
     
+    func createHeader(_ contact: Contact) -> UIView {
+        if let view = Bundle.main.loadNibNamed("ContactHeader", owner: self, options: nil)?[0] as? ContactHeader {
+            view.setupHeader(contact)
+            return view
+        }
+        return UIView()
+    }
+    
     fileprivate func setupTableView() {
+        guard let contact = contact else { return }
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = createHeader(contact)
     }
     
 }
 
 extension ContactDetailController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let contact = contact else { return 1 }
