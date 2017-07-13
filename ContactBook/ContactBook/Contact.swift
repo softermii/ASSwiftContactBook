@@ -10,12 +10,6 @@ import Foundation
 import Contacts
 import UIKit
 
-public extension UIImage {
-    public func getImageFromData(data: Data?) -> UIImage? {
-        guard let data = data else { return UIImage(named: "person") }
-        return UIImage(data: data)
-    }
-}
 
 open class Contact: NSObject {
     
@@ -58,9 +52,4 @@ open class Contact: NSObject {
             birthday = formatter.string(from: birthdayDate)
         }
     }
-    
-    
-    
-    
-    
 }

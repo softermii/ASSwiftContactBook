@@ -47,6 +47,7 @@ open class ASContactPicker: UIViewController {
     
     
     // MARK: - Settings
+    
     public static var barColor = UIColor.coolBlue
     public static var indexColor = barColor
     public var indexBackgroundColor = UIColor.lightText
@@ -57,31 +58,29 @@ open class ASContactPicker: UIViewController {
     public var multiSelection = true
     
     
-    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupController()
         initButtons()
-        
         fetchContacts()
     }
     
     convenience public init() {
         let bundle = Bundle(for: ASContactPicker.self)
-        self.init(nibName: "ASContactPicker", bundle: bundle)
+        self.init(nibName: ASContactPicker.className, bundle: bundle)
     }
     
     convenience  public init(subTitle: SubtitleType) {
         let bundle = Bundle(for: ASContactPicker.self)
-        self.init(nibName: "ASContactPicker", bundle: bundle)
+        self.init(nibName: ASContactPicker.className, bundle: bundle)
         subtitleType = subTitle
     }
     
     convenience public init(subTitle: SubtitleType, multipleSelection: Bool, barColor: UIColor = .coolBlue) {
         let bundle = Bundle(for: ASContactPicker.self)
-        self.init(nibName: "ASContactPicker", bundle: bundle)
+        self.init(nibName: ASContactPicker.className, bundle: bundle)
         subtitleType = subTitle
         multiSelection = multipleSelection
         ASContactPicker.barColor = barColor
@@ -130,7 +129,7 @@ open class ASContactPicker: UIViewController {
     private func setupTableView() {
         
         let bundle = Bundle(for: ASContactPicker.self)
-        tableView.register(UINib(nibName:"ContactCell", bundle: bundle), forCellReuseIdentifier: "contact")
+        tableView.register(UINib(nibName: ContactCell.className, bundle: bundle), forCellReuseIdentifier: ContactCell.className)
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -144,12 +143,10 @@ open class ASContactPicker: UIViewController {
 extension ASContactPicker: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        
         return category.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return contacts.filter { $0.firstName.substring(to: 1) == category[section] }.count
     }
     
@@ -157,11 +154,11 @@ extension ASContactPicker: UITableViewDataSource {
         
         let bundle = Bundle(for: ASContactPicker.self)
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contact", for: indexPath) as! ContactCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.className, for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
         cell.setupCell(contact: contact, subtitleType: subtitleType)
         cell.contactDetail = { contact in
-            let detail = ContactDetailController(nibName: String(describing: ContactDetailController.self), bundle: bundle)
+            let detail = ContactDetailController(nibName: ContactDetailController.className, bundle: bundle)
             detail.contact = contact
             self.show(detail, sender: self)
         }

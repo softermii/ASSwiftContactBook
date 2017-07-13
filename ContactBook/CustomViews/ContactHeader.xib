@@ -69,7 +69,7 @@
                                     <inset key="titleEdgeInsets" minX="-40" minY="40" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                     <state key="normal" title="message" image="message">
-                                        <color key="titleColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" red="0.11136301606893539" green="0.53638797998428345" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-4G-gU0">
@@ -82,7 +82,7 @@
                                     <inset key="titleEdgeInsets" minX="-40" minY="41" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                     <state key="normal" title="call" image="call">
-                                        <color key="titleColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" red="0.1113630161" green="0.53638797999999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tl1-ML-Cf2">
@@ -95,7 +95,7 @@
                                     <inset key="titleEdgeInsets" minX="-40" minY="41" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="20" minY="25" maxX="20" maxY="20"/>
                                     <state key="normal" title="mail" image="mail">
-                                        <color key="titleColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" red="0.1113630161" green="0.53638797999999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                 </button>
                             </subviews>
