@@ -10,7 +10,6 @@ import UIKit
 import Contacts
 
 
-
 public enum SubtitleType {
     case email
     case phone
@@ -115,12 +114,10 @@ open class ASContactPicker: UIViewController {
     
     
     @objc private func close() {
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func done() {
-        
         self.dismiss(animated: true) {
             self.didSelectContacts?(self.selectedContacts)
         }

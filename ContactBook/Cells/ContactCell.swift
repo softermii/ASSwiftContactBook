@@ -30,6 +30,7 @@ open class ContactCell: UITableViewCell {
         
         contactData = contact
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
+        profileImage.tintColor = ASContactPicker.barColor
         profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
         setupDetailTap()
         
