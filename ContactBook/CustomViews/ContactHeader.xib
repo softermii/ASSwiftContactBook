@@ -84,6 +84,9 @@
                                     <state key="normal" title="call" image="call">
                                         <color key="titleColor" red="0.1113630161" green="0.53638797999999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="callTap" destination="iN0-l3-epB" eventType="touchUpInside" id="kx0-7j-K9s"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tl1-ML-Cf2">
                                     <rect key="frame" x="185" y="0.0" width="50" height="50"/>

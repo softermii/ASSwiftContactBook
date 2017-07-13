@@ -33,8 +33,7 @@ class ContactsData: NSObject {
     lazy var contacts = Array<Contact>()
          let error: Error? = nil
     
-    
-   func getAllContacts() -> [Contact] {
+    func getAllContacts() -> [Contact] {
     
         let request = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
         request.sortOrder = .givenName
