@@ -42,8 +42,8 @@ pod 'ASSwiftContactBook'
 - **.birthday**
 - **.organization**
 
-### Screenshots:
-<img src="https://preview.ibb.co/nxkAq5/Simulator_Screen_Shot_Jul_1_2017_10_08_52.png" width="320" height="568">
+### Video Demo:
+![Screenshot](https://media.giphy.com/media/xUOrw1rYanIvZegIEw/giphy.gif)
 
 
 
