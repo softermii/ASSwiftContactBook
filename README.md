@@ -16,10 +16,11 @@ pod 'ASSwiftContactBook'
  // init contact picker with custom desire subtitle
  
  func showContactPicker {
+    
+	let contactsVC = ASContactPicker(subTitle: .phone, multipleSelection: true, shouldOpenContactDetail: true)
+    	let nav = UINavigationController(rootViewController: contactsVC)
+    	self.present(nav, animated: true, completion: nil)
  
-   let contacts = ASContactPicker(subTitle: .phone, multipleSelection: true) // true by default
-   let nav = UINavigationController(rootViewController: contacts)
-   self.present(nav, animated: true, completion: nil)
  
    // init handler for selected contacts
    contacts.didSelectContacts = { contacts in
