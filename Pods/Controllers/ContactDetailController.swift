@@ -46,7 +46,9 @@ class ContactDetailController: UIViewController {
     
     func createHeader(_ contact: Contact) -> UIView {
         
-        if let view = Bundle.main.loadNibNamed(ContactHeader.className, owner: self, options: nil)?[0] as? ContactHeader {
+        let bundle = Bundle(for: ASContactPicker.self)
+        let nib = UINib(nibName: ContactHeader.className, bundle: bundle)
+        if let view = nib.instantiate(withOwner: self, options: nil)[0] as? ContactHeader {
             view.setupHeader(contact)
             return view
         }
