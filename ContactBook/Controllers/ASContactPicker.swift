@@ -176,13 +176,15 @@ extension ASContactPicker: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! ContactCell
         guard let contact = cell.contactData else { return }
         
+        let bundle = Bundle(for: ASContactPicker.self)
+        
         if ASContactPicker.multiSelection {
             if !selectedContacts.contains(contact) {
                 selectedContacts.append(contact)
-                cell.select.image = UIImage(named: "check")
+                cell.select.image = UIImage(named: "check", in: bundle, compatibleWith: nil)
             } else {
                 selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
-                cell.select.image = UIImage(named: "uncheck")
+                cell.select.image = UIImage(named: "uncheck", in: bundle, compatibleWith: nil)
             }
         } else {
             selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
