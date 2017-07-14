@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 open class ContactHeader: UIView {
     
@@ -14,17 +15,12 @@ open class ContactHeader: UIView {
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileDescription: UILabel!
     
-    @IBOutlet weak var callButton: UIButton!
-    @IBOutlet weak var chatButton: UIButton!
-    @IBOutlet weak var mailButton: UIButton!
+    @IBOutlet weak var callButton: ActionButton!
+    @IBOutlet weak var chatButton: ActionButton!
+    @IBOutlet weak var mailButton: ActionButton!
     
     var contact: Contact!
-    
-    // actions
-    
-    var didTapOnCall: ((_ contact: [String]) -> Void)? = nil
-    
-    
+
     func setupHeader(_ contact: Contact) {
         
         let bundle              = Bundle(for: ASContactPicker.self)
@@ -32,27 +28,89 @@ open class ContactHeader: UIView {
         profileImage.image      = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
         profileName.text        = contact.firstName + " " + contact.lastName
         profileDescription.text = contact.jobTitle + "\n\n" + contact.organization
-        
-        
+        setupButtons()
     }
     
-    @IBAction func callTap() {
-       showAlertController(contact.phones)
+    func setupButtons() {
+        callButton.subtitleType = .phone
+        chatButton.subtitleType = .message
+        mailButton.subtitleType = .email
     }
     
+    @IBAction func actionTap(_ button: ActionButton) {
+        
+        switch button.subtitleType {
+        case .phone:
+            showAlertController(contact.phones, subtype: button.subtitleType)
+        case .message:
+            var allData = [String]()
+            allData.append(contentsOf: contact.phones)
+            allData.append(contentsOf: contact.emails)
+            showAlertController(allData, subtype: button.subtitleType)
+        case .email:
+            showAlertController(contact.emails, subtype: button.subtitleType)
+        default:
+            break
+        }
+       
+    }
     
-    func showAlertController(_ data: [String]) {
+    fileprivate func sendMessage(_ contact: String) {
+        
+        if MFMessageComposeViewController.canSendText() {
+            let messageVC = MFMessageComposeViewController()
+            messageVC.recipients = [contact]
+            messageVC.messageComposeDelegate = self
+            presentController(messageVC)
+        }
+    }
+    
+    fileprivate func sendEmail(_ contact: String) {
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.setToRecipients([contact])
+            mailVC.mailComposeDelegate = self
+            presentController(mailVC)
+        }
+    }
+    
+    fileprivate func openCallUrl(_ contact: String) {
+        let num = contact.digits.hasPrefix("+") ? contact.digits : "+" + contact.digits
+        if let url = URL(string: "tel://\(num)"), UIApplication.shared.canOpenURL(url) {
+            openURL(url)
+        }
+    }
+
+    fileprivate func presentController(_ controller: UIViewController) {
+        if let vc = UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController {
+            vc.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    private func openURL(_ url: URL) {
+        if #available(iOS 10, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    func showAlertController(_ data: [String], subtype: SubtitleType) {
         
         let actionSheet = UIAlertController(title: "Make your choose", message: nil, preferredStyle: .actionSheet)
-        
         for contact in data {
             let action = UIAlertAction(title: contact, style: .default, handler: { _ in
-                if let url = URL(string: "tel://\(contact.digits)"), UIApplication.shared.canOpenURL(url) {
-                    if #available(iOS 10, *) {
-                        UIApplication.shared.open(url)
-                    } else {
-                        UIApplication.shared.openURL(url)
-                    }
+                
+                switch subtype {
+                case .phone:
+                    self.openCallUrl(contact.digits)
+                case .email:
+                    self.sendEmail(contact)
+                case .message:
+                    self.sendMessage(contact)
+                default:
+                    break
                 }
             })
             
@@ -66,17 +124,23 @@ open class ContactHeader: UIView {
             vc.present(actionSheet, animated: true, completion: nil)
         }
     }
-    
-
-
-    func onCallTap() {
-        if let url = URL(string: "tel://\(contact.phones[0].digits)"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
-    }
- 
 }
+
+
+extension ContactHeader: MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    public func messageComposeViewController(_ controller: MFMessageComposeViewController,
+                                             didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+

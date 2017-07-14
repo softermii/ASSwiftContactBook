@@ -59,7 +59,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Ie4-j5-RrQ" userLabel="actions">
                             <rect key="frame" x="67.5" y="145" width="240" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdA-Ne-bq0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdA-Ne-bq0" customClass="ActionButton" customModule="ASContactBook" customModuleProvider="target">
                                     <rect key="frame" x="5" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="9vQ-bs-iB5"/>
@@ -71,8 +71,11 @@
                                     <state key="normal" title="message" image="message">
                                         <color key="titleColor" red="0.11136301606893539" green="0.53638797998428345" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="LDm-Cr-mz7"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-4G-gU0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-4G-gU0" customClass="ActionButton" customModule="ASContactBook" customModuleProvider="target">
                                     <rect key="frame" x="95" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="HU8-ZE-M0J"/>
@@ -85,10 +88,10 @@
                                         <color key="titleColor" red="0.1113630161" green="0.53638797999999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="callTap" destination="iN0-l3-epB" eventType="touchUpInside" id="kx0-7j-K9s"/>
+                                        <action selector="actionTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="X1W-4M-S5J"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tl1-ML-Cf2">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tl1-ML-Cf2" customClass="ActionButton" customModule="ASContactBook" customModuleProvider="target">
                                     <rect key="frame" x="185" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="50" id="G0R-ae-Mbj"/>
@@ -100,6 +103,9 @@
                                     <state key="normal" title="mail" image="mail">
                                         <color key="titleColor" red="0.1113630161" green="0.53638797999999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="bHe-YN-g2T"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -120,6 +126,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="callButton" destination="T2e-4G-gU0" id="OAS-3W-bLO"/>
+                <outlet property="chatButton" destination="WdA-Ne-bq0" id="f5j-RP-oCv"/>
+                <outlet property="mailButton" destination="Tl1-ML-Cf2" id="Tcn-Hl-92O"/>
                 <outlet property="profileDescription" destination="VHh-1U-d8u" id="DYx-4V-4wz"/>
                 <outlet property="profileImage" destination="LPI-Q0-sze" id="Jqx-ts-fTi"/>
                 <outlet property="profileName" destination="xW5-cL-hhO" id="Oxk-oy-Z7e"/>

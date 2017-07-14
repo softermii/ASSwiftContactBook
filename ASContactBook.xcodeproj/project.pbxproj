@@ -21,6 +21,8 @@
 		1E47054F1F16611E00E54DDB /* ContactDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E47054E1F16611E00E54DDB /* ContactDetailCell.xib */; };
 		1E4705511F16613600E54DDB /* ContactDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4705501F16613600E54DDB /* ContactDetailCell.swift */; };
 		1E4705521F16643100E54DDB /* ContactDetailCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E4705501F16613600E54DDB /* ContactDetailCell.swift */; };
+		1E84BECD1F18D081003E6478 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E84BECC1F18D081003E6478 /* ActionButton.swift */; };
+		1E84BECE1F18D8F1003E6478 /* ActionButton.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E84BECC1F18D081003E6478 /* ActionButton.swift */; };
 		1E93899C1F0267E500C0E596 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1E06E76E1F025E29000E7968 /* AppDelegate.swift */; };
 		1E93899E1F02680D00C0E596 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0BE78A1F025CB900D6850B /* Default-568h@2x.png */; };
 		1EAD17E71EEAD44A005B66FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EAD17E61EEAD44A005B66FB /* Assets.xcassets */; };
@@ -60,6 +62,7 @@
 		1E47054B1F162B1300E54DDB /* ContactHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactHeader.swift; sourceTree = "<group>"; };
 		1E47054E1F16611E00E54DDB /* ContactDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailCell.xib; sourceTree = "<group>"; };
 		1E4705501F16613600E54DDB /* ContactDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailCell.swift; sourceTree = "<group>"; };
+		1E84BECC1F18D081003E6478 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		1EAD17DC1EEAD44A005B66FB /* ASContactBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASContactBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAD17E61EEAD44A005B66FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EAD17E91EEAD44A005B66FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -129,6 +132,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1E84BECB1F18D075003E6478 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1E84BECC1F18D081003E6478 /* ActionButton.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		1EAD17D31EEAD44A005B66FB = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +164,7 @@
 				1E06E76F1F025E29000E7968 /* Extensions */,
 				1E06E7641F025E29000E7968 /* ContactBook */,
 				1E06E76A1F025E29000E7968 /* Cells */,
+				1E84BECB1F18D075003E6478 /* Classes */,
 				1EE808DA1F139ACF00BDBFF4 /* CustomViews */,
 				1EE808D41F1389AB00BDBFF4 /* CustomControllers */,
 				1E06E7671F025E29000E7968 /* Controllers */,
@@ -240,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E84BECE1F18D8F1003E6478 /* ActionButton.swift in Resources */,
 				1E4705521F16643100E54DDB /* ContactDetailCell.swift in Resources */,
 				1E47054D1F162B3B00E54DDB /* ContactHeader.swift in Resources */,
 				1EE808D11F13836E00BDBFF4 /* ContactDetailController.swift in Resources */,
@@ -277,6 +290,7 @@
 				1EE808CF1F1382F700BDBFF4 /* ContactDetailController.swift in Sources */,
 				1EF78ED61F0649740025598B /* Extensions.swift in Sources */,
 				1EF78ED71F0649740025598B /* Contact.swift in Sources */,
+				1E84BECD1F18D081003E6478 /* ActionButton.swift in Sources */,
 				1EF78ED81F0649740025598B /* ContactsData.swift in Sources */,
 				1EF78ED91F0649740025598B /* ContactCell.swift in Sources */,
 				1E47054C1F162B1300E54DDB /* ContactHeader.swift in Sources */,

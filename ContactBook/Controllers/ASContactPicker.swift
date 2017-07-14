@@ -10,12 +10,13 @@ import UIKit
 import Contacts
 
 
-public enum SubtitleType {
+public enum SubtitleType: String {
     case email
     case phone
     case birthday
     case organization
     case job
+    case message
 }
 
 open class ASContactPicker: UIViewController {
@@ -47,14 +48,15 @@ open class ASContactPicker: UIViewController {
     
     // MARK: - Settings
     
-    public static var barColor = UIColor.coolBlue
-    public static var indexColor = barColor
-    public var indexBackgroundColor = UIColor.lightText
-    public var cancelButtonTittle = "Cancel"
-    public var doneButtonTittle = "Done"
-    public var mainTitle = "Contacts"
-    public var subtitleType = SubtitleType.phone
-    public var multiSelection = true
+    public static var barColor                = UIColor.coolBlue
+    public static var indexColor              = barColor
+    public static var indexBackgroundColor    = UIColor.lightText
+    public static var cancelButtonTittle      = "Cancel"
+    public static var doneButtonTittle        = "Done"
+    public static var mainTitle               = "Contacts"
+    public static var subtitleType            = SubtitleType.phone
+    public static var multiSelection          = true
+    public static var shouldOpenContactDetail = false
     
     
     override open func viewDidLoad() {
@@ -71,18 +73,20 @@ open class ASContactPicker: UIViewController {
         self.init(nibName: ASContactPicker.className, bundle: bundle)
     }
     
-    convenience  public init(subTitle: SubtitleType) {
+    convenience  public init(subTitle: SubtitleType, shouldOpenContactDetail: Bool = false) {
         let bundle = Bundle(for: ASContactPicker.self)
         self.init(nibName: ASContactPicker.className, bundle: bundle)
-        subtitleType = subTitle
+        ASContactPicker.subtitleType                 = subTitle
+        ASContactPicker.shouldOpenContactDetail = shouldOpenContactDetail
     }
     
-    convenience public init(subTitle: SubtitleType, multipleSelection: Bool, barColor: UIColor = .coolBlue) {
+    convenience public init(subTitle: SubtitleType, multipleSelection: Bool, barColor: UIColor = .coolBlue, shouldOpenContactDetail: Bool = false) {
         let bundle = Bundle(for: ASContactPicker.self)
         self.init(nibName: ASContactPicker.className, bundle: bundle)
-        subtitleType = subTitle
-        multiSelection = multipleSelection
-        ASContactPicker.barColor = barColor
+        ASContactPicker.subtitleType                 = subTitle
+        ASContactPicker.multiSelection               = multipleSelection
+        ASContactPicker.barColor     = barColor
+        ASContactPicker.shouldOpenContactDetail = shouldOpenContactDetail
     }
     
     private func fetchContacts() {
@@ -94,7 +98,7 @@ open class ASContactPicker: UIViewController {
     }
     
     private func setupController() {
-        title = mainTitle
+        title = ASContactPicker.mainTitle
         navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                                    NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
@@ -102,11 +106,11 @@ open class ASContactPicker: UIViewController {
     
     fileprivate func initButtons() {
         
-        let closeButton = UIBarButtonItem(title: cancelButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.close))
+        let closeButton = UIBarButtonItem(title: ASContactPicker.cancelButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.close))
         closeButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = closeButton
         
-        doneButton = UIBarButtonItem(title: doneButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.done))
+        doneButton = UIBarButtonItem(title: ASContactPicker.doneButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.done))
         doneButton.tintColor = UIColor.white
         doneButton.isEnabled = false
         navigationItem.rightBarButtonItem = doneButton
@@ -132,7 +136,7 @@ open class ASContactPicker: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
         tableView.sectionIndexColor = ASContactPicker.indexColor
-        tableView.sectionIndexBackgroundColor = indexBackgroundColor
+        tableView.sectionIndexBackgroundColor = ASContactPicker.indexBackgroundColor
     }
     
 }
@@ -153,7 +157,7 @@ extension ASContactPicker: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.className, for: indexPath) as! ContactCell
         let contact = contacts.filter { $0.firstName.substring(to: 1) == category[indexPath.section]}[indexPath.row]
-        cell.setupCell(contact: contact, subtitleType: subtitleType)
+        cell.setupCell(contact: contact, subtitleType: ASContactPicker.subtitleType)
         cell.contactDetail = { contact in
             let detail = ContactDetailController(nibName: ContactDetailController.className, bundle: bundle)
             detail.contact = contact
@@ -172,7 +176,7 @@ extension ASContactPicker: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! ContactCell
         guard let contact = cell.contactData else { return }
         
-        if multiSelection {
+        if ASContactPicker.multiSelection {
             if !selectedContacts.contains(contact) {
                 selectedContacts.append(contact)
                 cell.select.image = UIImage(named: "check")

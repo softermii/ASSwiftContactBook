@@ -45,12 +45,16 @@ open class ContactCell: UITableViewCell {
             subTitle.text = "Organization: \(contact.organization)"
         case .birthday:
             subTitle.text = "Birthday: \(contact.birthday)"
+        default:
+            break
         }
     }
     
     func onImageTap() {
         guard let contact = contactData else { return }
-        contactDetail?(contact)
+        if ASContactPicker.shouldOpenContactDetail {
+            contactDetail?(contact)
+        }
     }
     
     override open func prepareForReuse() {
