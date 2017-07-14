@@ -33,21 +33,20 @@ class ContactsData: NSObject {
     lazy var contacts = Array<Contact>()
          let error: Error? = nil
     
-    
-   func getAllContacts() -> [Contact] {
+    func getAllContacts() -> [Contact] {
     
         let request = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
         request.sortOrder = .givenName
     
         try? contactsStore.enumerateContacts(with: request, usingBlock: { (person, pointer) in
 
-            let contact = Contact()
-            contact.firstName = person.givenName
-            contact.lastName = person.familyName
+            let contact          = Contact()
+            contact.firstName    = person.givenName
+            contact.lastName     = person.familyName
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
-            contact.contactId = person.identifier
-            contact.jobTitle = person.jobTitle
+            contact.contactId    = person.identifier
+            contact.jobTitle     = person.jobTitle
             
             if let date = person.birthday?.date {
                 contact.birthdayDate = date
@@ -55,7 +54,6 @@ class ContactsData: NSObject {
             
             contact.organization = person.organizationName
       
-            
             if let image = person.imageData, let thumb = person.thumbnailImageData {
                 contact.image = UIImage(data: image)
                 contact.thumb = UIImage(data: thumb)

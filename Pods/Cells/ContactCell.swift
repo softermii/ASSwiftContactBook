@@ -15,24 +15,24 @@ open class ContactCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var select: UIImageView!
     
-    
+    var contactDetail: ((_ contact: Contact) -> Void)? = nil
     var contactData: Contact?
     
-    override open func awakeFromNib() {
-        super.awakeFromNib()
-        let bundle = Bundle(for: ContactCell.self)
-        profileImage.image = UIImage(named: "person", in: bundle, compatibleWith: nil)
-        //select.tintColor = barColor
+    func setupDetailTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactCell.onImageTap))
+        profileImage.addGestureRecognizer(tap)
     }
-    
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
         
         let bundle = Bundle(for: ASContactPicker.self)
-        contactData = contact
         
+        contactData = contact
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
+        profileImage.tintColor = ASContactPicker.barColor
         profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
+        
+        setupDetailTap()
         
         switch subtitleType {
         case .phone:
@@ -45,11 +45,21 @@ open class ContactCell: UITableViewCell {
             subTitle.text = "Organization: \(contact.organization)"
         case .birthday:
             subTitle.text = "Birthday: \(contact.birthday)"
+        default:
+            break
+        }
+    }
+    
+    func onImageTap() {
+        guard let contact = contactData else { return }
+        if ASContactPicker.shouldOpenContactDetail {
+            contactDetail?(contact)
         }
     }
     
     override open func prepareForReuse() {
         super.prepareForReuse()
+        
         profileImage.image = UIImage(named: "person")
         fullName.text = nil
         subTitle.text = nil
