@@ -19,7 +19,7 @@ class ContactDetailController: UIViewController {
     convenience public init() {
         
         let bundle = Bundle(for: ASContactPicker.self)
-        self.init(nibName: "ContactDetailController", bundle: bundle)
+        self.init(nibName: ContactDetailController.className, bundle: bundle)
     }
     
     fileprivate func categories() -> [String] {
@@ -46,7 +46,7 @@ class ContactDetailController: UIViewController {
     
     func createHeader(_ contact: Contact) -> UIView {
         
-        if let view = Bundle.main.loadNibNamed("ContactHeader", owner: self, options: nil)?[0] as? ContactHeader {
+        if let view = Bundle.main.loadNibNamed(ContactHeader.className, owner: self, options: nil)?[0] as? ContactHeader {
             view.setupHeader(contact)
             return view
         }
@@ -57,8 +57,8 @@ class ContactDetailController: UIViewController {
         
         guard let contact = contact else { return }
         let bundle = Bundle(for: ASContactPicker.self)
-        tableView.register(UINib(nibName: String(describing: ContactDetailCell.self), bundle: bundle),
-                                                forCellReuseIdentifier: "detailCell")
+        tableView.register(UINib(nibName: ContactDetailCell.className, bundle: bundle),
+                                                forCellReuseIdentifier: ContactDetailCell.className)
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -75,15 +75,42 @@ extension ContactDetailController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         guard let contact = contact else { return 1 }
+        
+        switch section {
+        case 0:
+            return contact.phones.count
+        case 1:
+            return contact.emails.count
+        case 2:
+            return contact.birthday != "" ? 1 : 0
+        default:
+            break
+        }
+
         return contact.phoneLabels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let contact = contact else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! ContactDetailCell
-        cell.setupCell(contact.phones[indexPath.row], type: contact.phoneLabels[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.className, for: indexPath) as! ContactDetailCell
+        switch indexPath.section {
+        case 0:
+            cell.setupCell(contact.phones[indexPath.row], type: contact.phoneLabels[indexPath.row])
+        case 1:
+            cell.setupCell(contact.emails[indexPath.row], type: contact.emailLabels[indexPath.row])
+        case 2:
+            cell.setupCell(contact.birthdayDate.dateToStringFullMonth(), type: "birthday")
+        default:
+            break
+        }
+        
         return cell
     }
+}
+
+extension ContactDetailController: UITabBarControllerDelegate {
+    
 }

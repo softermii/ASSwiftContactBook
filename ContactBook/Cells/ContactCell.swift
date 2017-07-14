@@ -23,14 +23,15 @@ open class ContactCell: UITableViewCell {
         profileImage.addGestureRecognizer(tap)
     }
     
-    
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
         
         let bundle = Bundle(for: ASContactPicker.self)
         
         contactData = contact
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
+        profileImage.tintColor = ASContactPicker.barColor
         profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
+        
         setupDetailTap()
         
         switch subtitleType {
@@ -44,16 +45,21 @@ open class ContactCell: UITableViewCell {
             subTitle.text = "Organization: \(contact.organization)"
         case .birthday:
             subTitle.text = "Birthday: \(contact.birthday)"
+        default:
+            break
         }
     }
     
     func onImageTap() {
         guard let contact = contactData else { return }
-        contactDetail?(contact)
+        if ASContactPicker.shouldOpenContactDetail {
+            contactDetail?(contact)
+        }
     }
     
     override open func prepareForReuse() {
         super.prepareForReuse()
+        
         profileImage.image = UIImage(named: "person")
         fullName.text = nil
         subTitle.text = nil

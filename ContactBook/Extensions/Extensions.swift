@@ -38,9 +38,29 @@ public extension String {
 }
 
 
-extension UIViewController {
+public extension UIViewController {
     class func loadFromNib<T: UIViewController>() -> T {
         return T(nibName: String(describing: self), bundle: nil)
+    }
+}
+
+public extension NSObject {
+    
+    var className: String {
+        return NSStringFromClass(self as! AnyClass).components(separatedBy: ".").last ?? ""
+    }
+    
+    public class var className: String {
+        return NSStringFromClass(self).components(separatedBy: ".").last ?? ""
+    }
+}
+
+public extension Date {
+    
+    func dateToStringFullMonth() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd, YYYY"
+        return formatter.string(from: self)
     }
 }
 
