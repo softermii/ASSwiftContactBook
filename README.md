@@ -49,9 +49,9 @@ pod 'ASSwiftContactBook'
 
 ### TODO:
 
-- [ ] Create detailed contact view
+- [x] Create detailed contact view
 - [x] Implement single contact selection
-- [ ] Add call/compose email actions
+- [x] Add call/compose email actions
 
 
 ## Author:
