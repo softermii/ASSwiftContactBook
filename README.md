@@ -17,9 +17,9 @@ pod 'ASSwiftContactBook'
  
  func showContactPicker {
     
-	let contactsVC = ASContactPicker(subTitle: .phone, multipleSelection: true, shouldOpenContactDetail: true)
-    	let nav = UINavigationController(rootViewController: contactsVC)
-    	self.present(nav, animated: true, completion: nil)
+  let contactsVC = ASContactPicker(subTitle: .phone, multipleSelection: true, shouldOpenContactDetail: true)
+  let nav = UINavigationController(rootViewController: contactsVC)
+  self.present(nav, animated: true, completion: nil)
  
  
    // init handler for selected contacts
