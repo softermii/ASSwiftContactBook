@@ -24,7 +24,6 @@ pod 'ASSwiftContactBook'
  
    // init handler for selected contacts
    contacts.didSelectContacts = { contacts in
-       print(contacts.count)
        contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
    }
 
