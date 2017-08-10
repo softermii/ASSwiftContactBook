@@ -11,7 +11,7 @@ import MessageUI
 
 open class ContactHeader: UIView {
     
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileDescription: UILabel!
     
@@ -22,19 +22,26 @@ open class ContactHeader: UIView {
     var contact: Contact!
 
     func setupHeader(_ contact: Contact) {
-        
-        let bundle              = Bundle(for: ASContactPicker.self)
+
+        profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
+        profileLabel.layer.masksToBounds = true
+
         self.contact            = contact
-        profileImage.image      = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
         profileName.text        = contact.firstName + " " + contact.lastName
         profileDescription.text = contact.jobTitle + "\n\n" + contact.organization
+        
+        let firstName = contact.firstName.characters.first ?? Character.init("N")
+        let lastName = contact.lastName.characters.first ?? Character.init("A")
+        profileLabel.text = "\(firstName)\(lastName)".uppercased()
+        profileLabel.backgroundColor = ASContactPicker.barColor
+
         setupButtons()
     }
     
     func setupButtons() {
-        callButton.subtitleType = .phone
-        chatButton.subtitleType = .message
-        mailButton.subtitleType = .email
+        callButton.subtitleType = .phone; callButton.isEnabled = contact.phones.count > 0
+        chatButton.subtitleType = .message; chatButton.isEnabled = contact.phones.count > 0 || contact.emails.count > 0
+        mailButton.subtitleType = .email; mailButton.isEnabled = contact.emails.count > 0
     }
     
     @IBAction func actionTap(_ button: ActionButton) {
