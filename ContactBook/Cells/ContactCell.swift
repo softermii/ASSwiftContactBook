@@ -12,27 +12,35 @@ open class ContactCell: UITableViewCell {
     
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var select: UIImageView!
     
     var contactDetail: ((_ contact: Contact) -> Void)? = nil
     var contactData: Contact?
     
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
+        profileLabel.layer.masksToBounds = true
+        setupDetailTap()
+    }
+    
     func setupDetailTap() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactCell.onImageTap))
-        profileImage.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactCell.onLabelTap))
+        tap.numberOfTapsRequired = 1
+        profileLabel.addGestureRecognizer(tap)
     }
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
-        
-        let bundle = Bundle(for: ASContactPicker.self)
-        
+
         contactData = contact
         fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
-        profileImage.tintColor = ASContactPicker.barColor
-        profileImage.image = contact.thumb ?? UIImage(named: "person", in: bundle, compatibleWith: nil)
-        
-        setupDetailTap()
+        profileLabel.backgroundColor = ASContactPicker.barColor
+    
+        let firstName = contact.firstName.characters.first ?? Character.init("N/")
+        let lastName = contact.lastName.characters.first ?? Character.init("A")
+        profileLabel.text = "\(firstName)\(lastName)".uppercased()
+
         
         switch subtitleType {
         case .phone:
@@ -50,7 +58,7 @@ open class ContactCell: UITableViewCell {
         }
     }
     
-    func onImageTap() {
+    func onLabelTap() {
         guard let contact = contactData else { return }
         if ASContactPicker.shouldOpenContactDetail {
             contactDetail?(contact)
@@ -60,7 +68,7 @@ open class ContactCell: UITableViewCell {
     override open func prepareForReuse() {
         super.prepareForReuse()
         
-        profileImage.image = UIImage(named: "person")
+        profileLabel.text = nil
         fullName.text = nil
         subTitle.text = nil
         contactData = nil
