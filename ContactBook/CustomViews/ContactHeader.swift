@@ -32,9 +32,9 @@ open class ContactHeader: UIView {
     }
     
     func setupButtons() {
-        callButton.subtitleType = .phone
-        chatButton.subtitleType = .message
-        mailButton.subtitleType = .email
+        callButton.subtitleType = .phone; callButton.isEnabled = contact.phones.count > 0
+        chatButton.subtitleType = .message; chatButton.isEnabled = contact.phones.count > 0 || contact.emails.count > 0
+        mailButton.subtitleType = .email; mailButton.isEnabled = contact.emails.count > 0
     }
     
     @IBAction func actionTap(_ button: ActionButton) {
