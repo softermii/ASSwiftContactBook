@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,28 +19,25 @@
             <rect key="frame" x="0.0" y="0.0" width="373" height="51"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oMD-3z-IGi" id="zjG-oV-6cl">
-                <rect key="frame" x="0.0" y="0.0" width="373" height="50.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="373" height="51"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z4X-4a-EI1">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="50.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uf2-hP-q21">
-                                <rect key="frame" x="5" y="5" width="40" height="40.5"/>
+                                <rect key="frame" x="5" y="5.5" width="40" height="40"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="DQF-CT-nI8">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40.5"/>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEP-fo-b2M">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" priority="998" constant="40" id="iDJ-qv-sBq"/>
-                                            <constraint firstAttribute="height" priority="998" constant="40" id="pJ7-um-7Kq"/>
+                                            <constraint firstAttribute="height" constant="40" id="8n0-e2-YqW"/>
+                                            <constraint firstAttribute="width" constant="40" id="iHS-An-QRH"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-1P-Ett">
@@ -88,7 +85,7 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="fullName" destination="iBk-zk-vOK" id="CSS-UV-SD7"/>
-                <outlet property="profileImage" destination="DQF-CT-nI8" id="cH9-Mh-GAF"/>
+                <outlet property="profileLabel" destination="KEP-fo-b2M" id="VWB-O8-kGC"/>
                 <outlet property="select" destination="Oyd-xZ-JRs" id="aDt-km-RwQ"/>
                 <outlet property="subTitle" destination="ksV-3q-lpN" id="hjm-zP-koZ"/>
             </connections>
@@ -96,7 +93,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="person" width="50" height="50"/>
         <image name="uncheck" width="22" height="22"/>
     </resources>
 </document>
