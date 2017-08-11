@@ -41,7 +41,7 @@ pod 'ASSwiftContactBook'
 - **.birthday**
 - **.organization**
 
-### Video Demo:
+### DEMO:
 ![Screenshot](https://media.giphy.com/media/xUOrw1rYanIvZegIEw/giphy.gif)
 
 
