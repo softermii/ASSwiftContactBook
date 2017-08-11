@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                        = "ASSwiftContactBook"
-  s.version                     = ‘1.0.20’
+  s.version                     = ‘1.0.2.1’
   s.summary                     = "Custom Contact Book picker written in Swift 3.0"
   s.homepage                    = 'http://twitter.com/anton__dev'
   s.social_media_url            = 'http://twitter.com/anton__dev'
