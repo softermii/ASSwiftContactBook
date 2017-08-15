@@ -12,5 +12,4 @@ import UIKit
 open class ActionButton: UIButton {
     
     var subtitleType: SubtitleType = .phone
-    
 }

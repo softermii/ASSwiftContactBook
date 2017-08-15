@@ -193,7 +193,7 @@ extension ASContactPicker: UITableViewDelegate {
             })
         }
         
-        debugPrint("Selected \(selectedContacts.count) contacts")
+        debugPrint("Selected \(contact.firstName, contact.lastName)")
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

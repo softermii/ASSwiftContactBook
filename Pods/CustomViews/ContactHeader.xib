@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17A330h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,12 +18,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEE-Kz-vIM" userLabel="image">
-                            <rect key="frame" x="149.5" y="0.0" width="76" height="78"/>
+                            <rect key="frame" x="119.5" y="0.0" width="136" height="78"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOi-Hg-sYe">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yja-Au-tpy">
                                     <rect key="frame" x="8" y="10" width="60" height="60"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="60" id="E4c-Xy-Pfb"/>
+                                        <constraint firstAttribute="width" priority="999" constant="60" id="cLo-tI-Aa4"/>
+                                        <constraint firstAttribute="height" constant="60" id="glG-i9-kGG"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOi-Hg-sYe">
+                                    <rect key="frame" x="68" y="10" width="60" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="999" constant="60" id="E4c-Xy-Pfb"/>
                                         <constraint firstAttribute="height" constant="60" id="lJZ-4Z-J5K"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -125,10 +132,12 @@
             <connections>
                 <outlet property="callButton" destination="T2e-4G-gU0" id="OAS-3W-bLO"/>
                 <outlet property="chatButton" destination="WdA-Ne-bq0" id="f5j-RP-oCv"/>
+                <outlet property="contactImage" destination="yja-Au-tpy" id="lVt-4C-zWK"/>
                 <outlet property="mailButton" destination="Tl1-ML-Cf2" id="Tcn-Hl-92O"/>
                 <outlet property="profileDescription" destination="VHh-1U-d8u" id="DYx-4V-4wz"/>
                 <outlet property="profileLabel" destination="NOi-Hg-sYe" id="uCZ-GU-Rgu"/>
                 <outlet property="profileName" destination="xW5-cL-hhO" id="Oxk-oy-Z7e"/>
+                <outlet property="stackView" destination="EEE-Kz-vIM" id="LLt-LD-1EP"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-200.5"/>
         </view>

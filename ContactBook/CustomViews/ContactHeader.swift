@@ -15,6 +15,9 @@ open class ContactHeader: UIView {
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileDescription: UILabel!
     
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var contactImage: UIImageView!
+    
     @IBOutlet weak var callButton: ActionButton!
     @IBOutlet weak var chatButton: ActionButton!
     @IBOutlet weak var mailButton: ActionButton!
@@ -25,6 +28,9 @@ open class ContactHeader: UIView {
 
         profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
         profileLabel.layer.masksToBounds = true
+        contactImage.layer.cornerRadius = profileLabel.frame.size.height / 2
+        contactImage.layer.masksToBounds = true
+
 
         self.contact            = contact
         profileName.text        = contact.firstName + " " + contact.lastName
@@ -34,9 +40,24 @@ open class ContactHeader: UIView {
         let lastName = contact.lastName.characters.first ?? Character.init("A")
         profileLabel.text = "\(firstName)\(lastName)".uppercased()
         profileLabel.backgroundColor = ASContactPicker.barColor
+        
+        updateUI(contact)
 
         setupButtons()
     }
+    
+    func updateUI(_ contact: Contact) {
+        if contact.thumb != nil {
+            stackView.insertArrangedSubview(contactImage, at: 0)
+            contactImage.image = contact.thumb
+            contactImage.isHidden = false
+            profileLabel.isHidden = true
+        } else {
+            stackView.removeArrangedSubview(contactImage)
+            profileLabel.isHidden = false
+        }
+    }
+
     
     func setupButtons() {
         callButton.subtitleType = .phone; callButton.isEnabled = contact.phones.count > 0

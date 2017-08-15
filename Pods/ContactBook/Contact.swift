@@ -19,8 +19,8 @@ open class Contact: NSObject {
     public var jobTitle: String      = ""
     public var organization: String  = ""
     public var birthday: String      = ""
-    public var image                 = UIImage(named: "person")
-    public var thumb                 = UIImage(named: "person")
+    public var image: UIImage?       = nil
+    public var thumb: UIImage?       = nil
     public var phones: [String]      = []
     public var emails: [String]      = []
     public var phoneLabels: [String] = []
