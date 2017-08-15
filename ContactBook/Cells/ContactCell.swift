@@ -72,6 +72,7 @@ open class ContactCell: UITableViewCell {
             contactImage.isHidden = false
             profileLabel.isHidden = true
         } else {
+            contactImage.isHidden = true
             profileLabel.isHidden = false
         }
     }
