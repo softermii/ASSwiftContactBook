@@ -35,7 +35,9 @@ open class ASContactPicker: UIViewController {
         didSet {
             category = Array(Set(self.contacts.map { String($0.firstName.substring(to: 1).uppercased() ) })).sorted
                 { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -210,20 +212,28 @@ extension ASContactPicker: UITableViewDelegate {
 
 extension ASContactPicker: UISearchBarDelegate {
     
-    public func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
-        if range.length + range.location > 0 {
-            let filteredContacts = contacts.filter { ($0.firstName.contains(text) || $0.lastName.contains(text)) }
-            contacts = filteredContacts
-            
-        } else {
-            contacts = ContactsData().getAllContacts()
-        }
+        searchBar.showsCancelButton = true
         return true
     }
     
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+        contacts = ContactsData().getAllContacts()
+    }
+
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.characters.count == 0 {
+
+        if !searchText.isEmpty {
+            contacts = ContactsData().getAllContacts()
+            let filteredContacts = contacts.filter { ($0.firstName.contains(searchText) || $0.lastName.contains(searchText)) }
+            contacts = filteredContacts
+        } else {
+            searchBar.resignFirstResponder()
             contacts = ContactsData().getAllContacts()
         }
     }

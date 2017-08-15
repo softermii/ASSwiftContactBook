@@ -53,7 +53,7 @@ open class ContactHeader: UIView {
             contactImage.isHidden = false
             profileLabel.isHidden = true
         } else {
-            stackView.removeArrangedSubview(contactImage)
+            contactImage.isHidden = true
             profileLabel.isHidden = false
         }
     }
