@@ -12,6 +12,11 @@ pod 'ASSwiftContactBook'
 ```
 
 ### Usage:
+
+```swift
+import ASSwiftContactBook
+````
+
 ```swift
  // init contact picker with custom desire subtitle
  
