@@ -28,6 +28,7 @@ open class ASContactPicker: UIViewController {
     
     public var didSelectContacts: ((_ selectedContacts: [Contact]) -> Void)? = nil
     public var didSelectSingleContact: ((_ selectedContact: Contact) -> Void)? = nil
+     public var didSelectSingleContactInstance: ((_ selectedContact: String) -> Void)? = nil
     
     var category = [String]()
     
@@ -189,10 +190,14 @@ extension ASContactPicker: UITableViewDelegate {
                 cell.select.image = UIImage(named: "uncheck", in: bundle, compatibleWith: nil)
             }
         } else {
-            selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
+            let detail = ContactDetailController(nibName: ContactDetailController.className, bundle: bundle)
+            detail.contact = contact
+            detail.delegate = self
+            self.show(detail, sender: self)
+            /*selectedContacts = selectedContacts.filter { $0.contactId != contact.contactId }
             self.dismiss(animated: true, completion: {
                 self.didSelectSingleContact?(contact)
-            })
+            })*/
         }
         
         debugPrint("Selected \(contact.firstName, contact.lastName)")
@@ -236,5 +241,14 @@ extension ASContactPicker: UISearchBarDelegate {
             searchBar.resignFirstResponder()
             contacts = ContactsData().getAllContacts()
         }
+    }
+}
+
+extension ASContactPicker: ContactDetailControllerDelegate {
+    
+    func getContact(_ contact: String) {
+        self.dismiss(animated: true, completion: {
+            self.didSelectSingleContactInstance?(contact)
+        })
     }
 }

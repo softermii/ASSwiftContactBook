@@ -9,11 +9,16 @@
 import UIKit
 import Foundation
 
+protocol ContactDetailControllerDelegate: class {
+    func getContact(_ contact: String)
+}
+
 class ContactDetailController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var contact: Contact?
+    weak var delegate: ContactDetailControllerDelegate?
     
     
     convenience public init() {
@@ -23,7 +28,8 @@ class ContactDetailController: UIViewController {
     }
     
     fileprivate func categories() -> [String] {
-        return ["phones", "emails", "birthday"]
+        //return ["phones", "emails", "birthday"]
+        return ["phones"]
     }
 
     
@@ -40,6 +46,7 @@ class ContactDetailController: UIViewController {
         title = "\(contact.firstName)  \(contact.lastName)"
         navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.tintColor = .white
+        automaticallyAdjustsScrollViewInsets = false
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                                 NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
     }
@@ -48,9 +55,13 @@ class ContactDetailController: UIViewController {
         
         let bundle = Bundle(for: ASContactPicker.self)
         let nib = UINib(nibName: ContactHeader.className, bundle: bundle)
-        if let view = nib.instantiate(withOwner: self, options: nil)[0] as? ContactHeader {
-            view.setupHeader(contact)
-            return view
+            
+        if let header = nib.instantiate(withOwner: self, options: nil)[0] as? ContactHeader {
+            header.setNeedsLayout()
+            header.layoutIfNeeded()
+            header.frame = CGRect(x: 40, y: 20, width: tableView.frame.size.width - 40, height: 350)
+            header.setupHeader(contact)
+            return header
         }
         return UIView()
     }
@@ -66,6 +77,8 @@ class ContactDetailController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = createHeader(contact)
+        tableView.dataSource = self
+        tableView.delegate = self as? UITableViewDelegate
     }
     
 }
@@ -108,11 +121,18 @@ extension ContactDetailController: UITableViewDataSource {
         default:
             break
         }
-        
+
         return cell
     }
 }
 
-extension ContactDetailController: UITabBarControllerDelegate {
+extension ContactDetailController: UITableViewDelegate {
     
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        guard let phone = contact?.phones[indexPath.row] else { return }
+        //let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.className, for: indexPath) as! ContactDetailCell
+        delegate?.getContact(phone)
+        self.navigationController?.popViewController(animated: true)
+    }
 }

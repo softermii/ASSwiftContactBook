@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBAction func showPicker() {
         
-        let contactsVC = ASContactPicker(subTitle: .phone, multipleSelection: true, shouldOpenContactDetail: true)
+        let contactsVC = ASContactPicker(subTitle: .phone, multipleSelection: false, shouldOpenContactDetail: true)
         let nav = UINavigationController(rootViewController: contactsVC)
         self.present(nav, animated: true, completion: nil)
         

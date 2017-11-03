@@ -36,8 +36,8 @@ open class ContactHeader: UIView {
         profileName.text        = contact.firstName + " " + contact.lastName
         profileDescription.text = contact.jobTitle + "\n\n" + contact.organization
         
-        let firstName = contact.firstName.characters.first ?? Character.init("N")
-        let lastName = contact.lastName.characters.first ?? Character.init("A")
+        let firstName = contact.firstName.first ?? Character.init("N")
+        let lastName = contact.lastName.first ?? Character.init("A")
         profileLabel.text = "\(firstName)\(lastName)".uppercased()
         profileLabel.backgroundColor = ASContactPicker.barColor
         
