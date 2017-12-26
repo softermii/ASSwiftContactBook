@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 protocol ContactDetailControllerDelegate: class {
-    func getContact(_ contact: String)
+    func getPhone(_ phone: String)
 }
 
 class ContactDetailController: UIViewController {
@@ -28,7 +28,6 @@ class ContactDetailController: UIViewController {
     }
     
     fileprivate func categories() -> [String] {
-        //return ["phones", "emails", "birthday"]
         return ["phones"]
     }
 
@@ -55,12 +54,9 @@ class ContactDetailController: UIViewController {
         
         let bundle = Bundle(for: ASContactPicker.self)
         let nib = UINib(nibName: ContactHeader.className, bundle: bundle)
-            
         if let header = nib.instantiate(withOwner: self, options: nil)[0] as? ContactHeader {
-            header.setNeedsLayout()
-            header.layoutIfNeeded()
-            header.frame = CGRect(x: 40, y: 20, width: tableView.frame.size.width - 40, height: 350)
             header.setupHeader(contact)
+            header.layoutIfNeeded()
             return header
         }
         return UIView()
@@ -78,7 +74,7 @@ class ContactDetailController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = createHeader(contact)
         tableView.dataSource = self
-        tableView.delegate = self as? UITableViewDelegate
+        tableView.delegate = self
     }
     
 }
@@ -124,15 +120,14 @@ extension ContactDetailController: UITableViewDataSource {
 
         return cell
     }
+    
 }
 
 extension ContactDetailController: UITableViewDelegate {
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         guard let phone = contact?.phones[indexPath.row] else { return }
-        //let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailCell.className, for: indexPath) as! ContactDetailCell
-        delegate?.getContact(phone)
+        delegate?.getPhone(phone)
         self.navigationController?.popViewController(animated: true)
     }
 }

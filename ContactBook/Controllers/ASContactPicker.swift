@@ -28,7 +28,7 @@ open class ASContactPicker: UIViewController {
     
     public var didSelectContacts: ((_ selectedContacts: [Contact]) -> Void)? = nil
     public var didSelectSingleContact: ((_ selectedContact: Contact) -> Void)? = nil
-     public var didSelectSingleContactInstance: ((_ selectedContact: String) -> Void)? = nil
+     public var didSelectSinglePhoneNumber: ((_ selectedPhone: String) -> Void)? = nil
     
     var category = [String]()
     
@@ -245,10 +245,10 @@ extension ASContactPicker: UISearchBarDelegate {
 }
 
 extension ASContactPicker: ContactDetailControllerDelegate {
-    
-    func getContact(_ contact: String) {
+
+    func getPhone(_ phone: String) {
         self.dismiss(animated: true, completion: {
-            self.didSelectSingleContactInstance?(contact)
+            self.didSelectSinglePhoneNumber?(phone)
         })
     }
 }

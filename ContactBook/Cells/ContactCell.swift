@@ -23,12 +23,14 @@ open class ContactCell: UITableViewCell {
     
     open override func awakeFromNib() {
         super.awakeFromNib()
-        contactImage.layer.cornerRadius = profileLabel.frame.size.height / 2
-        contactImage.layer.masksToBounds = true
-        profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
-        profileLabel.layer.masksToBounds = true
-        setupDetailTap(profileLabel)
-        setupDetailTap(contactImage)
+        
+        self.contactImage.layer.cornerRadius = profileLabel.frame.size.height / 2
+        self.contactImage.layer.masksToBounds = true
+        self.profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
+        self.profileLabel.layer.masksToBounds = true
+        
+        //self.setupDetailTap(profileLabel)
+        //self.setupDetailTap(contactImage)
     }
     
     func setupDetailTap(_ view: UIView) {
@@ -39,27 +41,27 @@ open class ContactCell: UITableViewCell {
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
 
-        contactData = contact
-        fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
-        profileLabel.backgroundColor = ASContactPicker.barColor
+        self.contactData = contact
+        self.fullName.text = "\(String(describing: contact.firstName)) \(String(describing: contact.lastName))"
+        self.profileLabel.backgroundColor = ASContactPicker.barColor
     
-        let firstName = contact.firstName.characters.first ?? Character.init("N")
-        let lastName = contact.lastName.characters.first ?? Character.init("A")
-        profileLabel.text = "\(firstName)\(lastName)".uppercased()
+        let firstName = contact.firstName.first ?? Character.init("N")
+        let lastName = contact.lastName.first ?? Character.init("A")
+        self.profileLabel.text = "\(firstName)\(lastName)".uppercased()
         
-        updateUI(contact)
+        self.updateUI(contact)
 
         switch subtitleType {
         case .phone:
-            subTitle.text = contact.phones.count > 0 ? contact.phones[0] : ""
+            self.subTitle.text = contact.phones.count > 0 ? contact.phones[0] : ""
         case .email:
-            subTitle.text = contact.emails.count > 0 ? contact.emails[0] : ""
+            self.subTitle.text = contact.emails.count > 0 ? contact.emails[0] : ""
         case .job:
-            subTitle.text = "Job title: \(contact.jobTitle)"
+            self.subTitle.text = "Job title: \(contact.jobTitle)"
         case .organization:
-            subTitle.text = "Organization: \(contact.organization)"
+            self.subTitle.text = "Organization: \(contact.organization)"
         case .birthday:
-            subTitle.text = "Birthday: \(contact.birthday)"
+            self.subTitle.text = "Birthday: \(contact.birthday)"
         default:
             break
         }
@@ -80,16 +82,16 @@ open class ContactCell: UITableViewCell {
     func onLabelTap() {
         guard let contact = contactData else { return }
         if ASContactPicker.shouldOpenContactDetail {
-            contactDetail?(contact)
+            self.contactDetail?(contact)
         }
     }
     
     override open func prepareForReuse() {
         super.prepareForReuse()
         
-        profileLabel.text = nil
-        fullName.text = nil
-        subTitle.text = nil
-        contactData = nil
+        self.profileLabel.text = nil
+        self.fullName.text = nil
+        self.subTitle.text = nil
+        self.contactData = nil
     }
 }

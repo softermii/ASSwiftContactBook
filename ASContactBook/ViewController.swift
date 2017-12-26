@@ -22,8 +22,8 @@ class ViewController: UIViewController {
             contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
         }
         
-        contactsVC.didSelectSingleContact = { contact in
-            debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
+        contactsVC.didSelectSinglePhoneNumber = { contact in
+            debugPrint("Selected Phone number ===> \(contact.digits)")
         }
     } 
 }

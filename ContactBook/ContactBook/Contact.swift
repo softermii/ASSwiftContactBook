@@ -26,12 +26,29 @@ open class Contact: NSObject {
     public var phoneLabels: [String] = []
     public var emailLabels: [String] = []
     
+    public var name = "" {
+        didSet {
+            if name.count > 0 {
+                firstName = name
+            }
+        }
+    }
+    
+    public var last = "" {
+        didSet {
+            if name.count > 0 {
+                lastName = last
+            }
+        }
+    }
+    
     
     public var originPhones = [CNLabeledValue<CNPhoneNumber>]() {
         didSet {
             originPhones.forEach { phone in
                 phones.append(phone.value.stringValue)
-                phoneLabels.append(CNLabeledValue<NSString>.localizedString(forLabel: phone.label!))
+                guard let label = phone.label else { return }
+                phoneLabels.append(CNLabeledValue<NSString>.localizedString(forLabel: label))
             }
         }
     }
@@ -40,7 +57,8 @@ open class Contact: NSObject {
         didSet {
             originEmails.forEach { email in
                 emails.append((email.value as NSString) as String)
-                emailLabels.append(CNLabeledValue<NSString>.localizedString(forLabel: email.label!))
+                guard let label = email.label else { return }
+                emailLabels.append(CNLabeledValue<NSString>.localizedString(forLabel: label))
             }
         }
     }
