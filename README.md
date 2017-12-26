@@ -32,10 +32,10 @@ import ASSwiftContactBook
        contacts.forEach { contact in debugPrint("\(contact.firstName) \(contact.lastName)") }
    }
 
-   // init handler for single contact, in case you choosed single selection
-   contacts.didSelectSingleContact = { contact in
-       debugPrint("\(contact.firstName) \(contact.phones[0].digits)")
-   }
+   // init handler for single phone number from contact details, in case you choosed single selection
+    contactsVC.didSelectSinglePhoneNumber = { contact in
+            debugPrint("Selected Phone number ===> \(contact.digits)")
+    }
 }
 
 ```
@@ -48,14 +48,6 @@ import ASSwiftContactBook
 
 ### DEMO:
 ![Screenshot](https://media.giphy.com/media/xUOrw1rYanIvZegIEw/giphy.gif)
-
-
-
-### TODO:
-
-- [x] Create detailed contact view
-- [x] Implement single contact selection
-- [x] Add call/compose email actions
 
 
 ## Author:
