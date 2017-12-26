@@ -41,8 +41,8 @@ class ContactsData: NSObject {
         try? contactsStore.enumerateContacts(with: request, usingBlock: { (person, pointer) in
 
             let contact          = Contact()
-            contact.firstName    = person.givenName
-            contact.lastName     = person.familyName
+            contact.name         = person.givenName
+            contact.last         = person.familyName
             contact.originPhones = person.phoneNumbers
             contact.originEmails = person.emailAddresses
             contact.contactId    = person.identifier
@@ -58,8 +58,9 @@ class ContactsData: NSObject {
                 contact.image = UIImage(data: image)
                 contact.thumb = UIImage(data: thumb)
             }
+            debugPrint(contact.firstName)
             self.contacts.append(contact)
-        })
+        }) 
         return self.contacts
     }
     

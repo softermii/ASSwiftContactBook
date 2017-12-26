@@ -28,22 +28,22 @@ open class ContactHeader: UIView {
 
         profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
         profileLabel.layer.masksToBounds = true
-        contactImage.layer.cornerRadius = profileLabel.frame.size.height / 2
+        contactImage.layer.cornerRadius = contactImage.frame.size.height / 2
         contactImage.layer.masksToBounds = true
 
 
         self.contact            = contact
-        profileName.text        = contact.firstName + " " + contact.lastName
-        profileDescription.text = contact.jobTitle + "\n\n" + contact.organization
+        self.profileName.text        = contact.firstName + " " + contact.lastName
+        self.profileDescription.text = contact.jobTitle + " " + contact.organization
         
-        let firstName = contact.firstName.characters.first ?? Character.init("N")
-        let lastName = contact.lastName.characters.first ?? Character.init("A")
-        profileLabel.text = "\(firstName)\(lastName)".uppercased()
-        profileLabel.backgroundColor = ASContactPicker.barColor
+        let firstName = contact.firstName.first ?? Character.init("N")
+        let lastName = contact.lastName.first ?? Character.init("A")
+        self.profileLabel.text = "\(firstName)\(lastName)".uppercased()
+        self.profileLabel.backgroundColor = ASContactPicker.barColor
         
-        updateUI(contact)
+        self.updateUI(contact)
 
-        setupButtons()
+        self.setupButtons()
     }
     
     func updateUI(_ contact: Contact) {

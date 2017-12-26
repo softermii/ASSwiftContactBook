@@ -8,14 +8,14 @@
 
 import UIKit
 
+
+
 class ContactDetailCell: UITableViewCell {
     
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var dataType: UILabel!
-    
-    
+
     func setupCell(_ data: String, type: String) {
-        
         dataLabel.text = data
         dataType.text = type
     }
