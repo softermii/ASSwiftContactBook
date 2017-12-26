@@ -28,16 +28,8 @@ open class ContactCell: UITableViewCell {
         self.contactImage.layer.masksToBounds = true
         self.profileLabel.layer.cornerRadius = profileLabel.frame.size.height / 2
         self.profileLabel.layer.masksToBounds = true
-        
-        //self.setupDetailTap(profileLabel)
-        //self.setupDetailTap(contactImage)
     }
     
-    func setupDetailTap(_ view: UIView) {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ContactCell.onLabelTap))
-        tap.numberOfTapsRequired = 1
-        view.addGestureRecognizer(tap)
-    }
     
     func setupCell(contact: Contact, subtitleType: SubtitleType) {
 
@@ -76,13 +68,6 @@ open class ContactCell: UITableViewCell {
         } else {
             contactImage.isHidden = true
             profileLabel.isHidden = false
-        }
-    }
-    
-    func onLabelTap() {
-        guard let contact = contactData else { return }
-        if ASContactPicker.shouldOpenContactDetail {
-            self.contactDetail?(contact)
         }
     }
     

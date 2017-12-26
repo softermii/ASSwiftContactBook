@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 public extension UIColor {
-    @nonobjc static let coolBlue = UIColor(red: 70 / 255 , green: 130 / 255 , blue: 180 / 255 , alpha: 1)
+     static let coolBlue = UIColor(red: 70 / 255 , green: 130 / 255 , blue: 180 / 255 , alpha: 1)
 }
 

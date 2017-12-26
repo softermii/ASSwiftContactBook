@@ -46,8 +46,8 @@ class ContactDetailController: UIViewController {
         navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
         navigationController?.navigationBar.tintColor = .white
         automaticallyAdjustsScrollViewInsets = false
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
-                                                                NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                                                                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)]
     }
     
     func createHeader(_ contact: Contact) -> UIView {

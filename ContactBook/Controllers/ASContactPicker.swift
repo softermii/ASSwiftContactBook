@@ -103,8 +103,8 @@ open class ASContactPicker: UIViewController {
     private func setupController() {
         title = ASContactPicker.mainTitle
         navigationController?.navigationBar.barTintColor = ASContactPicker.barColor
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
-                                                                   NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightBold)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                                                                   NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)]
     }
     
     fileprivate func initButtons() {
@@ -113,18 +113,18 @@ open class ASContactPicker: UIViewController {
         closeButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = closeButton
         
-        doneButton = UIBarButtonItem(title: ASContactPicker.doneButtonTittle, style: .plain, target: self, action: #selector(ASContactPicker.done))
+        doneButton = UIBarButtonItem(title: ASContactPicker.doneButtonTittle, style: .plain, target: self, action: #selector(self.done))
         doneButton.tintColor = UIColor.white
         doneButton.isEnabled = false
         navigationItem.rightBarButtonItem = doneButton
     }
     
     
-    @objc private func close() {
+    @objc func close() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc private func done() {
+    @objc func done() {
         self.dismiss(animated: true) {
             self.didSelectContacts?(self.selectedContacts)
         }
